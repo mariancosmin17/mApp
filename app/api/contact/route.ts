@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { resend, buildEmailHtml } from '@/lib/resend';
+import { getResend, buildEmailHtml } from '@/lib/resend';
 
 export async function POST(req: NextRequest) {
   try {
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { error } = await resend.emails.send({
+    const { error } = await getResend().emails.send({
       from: 'MASERCOM Site <onboarding@resend.dev>',
       to: toEmail,
       subject: `Mesaj nou de pe site — ${service ?? 'General'} — ${name}`,
