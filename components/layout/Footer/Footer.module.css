@@ -1,0 +1,143 @@
+.footer {
+  background-color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.7);
+  padding: var(--spacing-2xl) 0 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
+}
+
+/* Brand column */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: var(--color-white);
+  letter-spacing: -0.5px;
+}
+
+.logoAccent {
+  color: var(--color-primary);
+}
+
+.tagline {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 280px;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.contactItem a {
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--transition);
+}
+
+.contactItem a:hover {
+  color: var(--color-primary-light);
+}
+
+.contactIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Link columns */
+.column h4 {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-gray-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.linkList a {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  transition: color var(--transition), padding-left var(--transition);
+}
+
+.linkList a:hover {
+  color: var(--color-primary-light);
+  padding-left: 4px;
+}
+
+/* Bottom bar */
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: var(--spacing-md) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.copyright {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.bottomLinks {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.bottomLinks a {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color var(--transition);
+}
+
+.bottomLinks a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
