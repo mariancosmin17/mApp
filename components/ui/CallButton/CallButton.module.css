@@ -1,0 +1,61 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.45rem 1.25rem 0.45rem 0.45rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  transition: border-color var(--transition), background-color var(--transition), transform var(--transition);
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.btn:hover .iconWrap {
+  transform: scale(1.06);
+}
+
+/* Solid — for light backgrounds */
+.solid {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 6px 20px rgba(0, 91, 179, 0.28);
+}
+
+.solid:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.solid .iconWrap {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: var(--color-white);
+}
+
+/* Ghost — for dark hero backgrounds */
+.ghost {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--color-white);
+}
+
+.ghost:hover {
+  border-color: rgba(0, 91, 179, 0.6);
+  background-color: rgba(0, 91, 179, 0.1);
+}
+
+.ghost .iconWrap {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}

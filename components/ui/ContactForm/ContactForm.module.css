@@ -6,10 +6,29 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.title {
-  font-size: 1.25rem;
-  margin-bottom: var(--spacing-md);
+.formTag {
+  display: inline-block;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.formHeading {
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
   color: var(--color-dark);
+  margin-bottom: 0.4rem;
+}
+
+.formSubtitle {
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+  max-width: 380px;
 }
 
 .form {
@@ -32,15 +51,23 @@
 
 .label {
   font-family: var(--font-heading);
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
   color: var(--color-gray-dark);
 }
 
 .required {
   color: var(--color-primary);
+}
+
+.optional {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-gray-light);
+  font-size: 0.8rem;
 }
 
 .input,
@@ -53,7 +80,7 @@
   border: 1.5px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-md);
   padding: 0.75rem 1rem;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
   width: 100%;
 }
 
@@ -62,7 +89,7 @@
 .textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(230, 81, 0, 0.12);
+  box-shadow: 0 0 0 3px rgba(0, 91, 179, 0.12);
   background-color: var(--color-white);
 }
 
@@ -71,10 +98,19 @@
   color: var(--color-gray-light);
 }
 
+.inputError {
+  border-color: #ef4444;
+}
+
+.inputError:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
 .select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.5rem;
@@ -82,12 +118,12 @@
 
 .textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 110px;
 }
 
 .error {
-  font-size: 0.8rem;
-  color: #d32f2f;
+  font-size: 0.78rem;
+  color: #ef4444;
 }
 
 .submitBtn {
@@ -97,20 +133,20 @@
   gap: 0.5rem;
   width: 100%;
   padding: 1rem;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border: none;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
   border-radius: var(--radius-full);
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color var(--transition), transform var(--transition);
+  transition: background-color var(--transition), transform var(--transition), color var(--transition);
   margin-top: var(--spacing-xs);
 }
 
 .submitBtn:hover:not(:disabled) {
-  background-color: var(--color-primary-dark);
+  background-color: rgba(0, 91, 179, 0.06);
   transform: translateY(-1px);
 }
 
@@ -125,28 +161,38 @@
   align-items: center;
   text-align: center;
   gap: var(--spacing-sm);
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-2xl) var(--spacing-lg);
 }
 
 .successIcon {
-  font-size: 3rem;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .successMsg h3 {
-  color: #2e7d32;
+  font-size: 1.5rem;
+  color: var(--color-dark);
 }
 
 .successMsg p {
   font-size: 0.95rem;
+  color: var(--color-gray);
 }
 
 .errorBanner {
-  background-color: #fde8e8;
-  border: 1px solid #f5c2c2;
+  background-color: #fef2f2;
+  border: 1px solid rgba(239, 68, 68, 0.25);
   border-radius: var(--radius-md);
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
-  color: #c62828;
+  color: #b91c1c;
+  margin-bottom: var(--spacing-sm);
 }
 
 @media (max-width: 600px) {

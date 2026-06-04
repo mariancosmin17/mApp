@@ -1,29 +1,36 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import styles from './ServiceCard.module.css';
 
 interface ServiceCardProps {
-  icon: string;
+  image: string;
   title: string;
   description: string;
   href: string;
+  number: number;
 }
 
-export default function ServiceCard({
-  icon,
-  title,
-  description,
-  href,
-}: ServiceCardProps) {
+export default function ServiceCard({ image, title, description, href, number }: ServiceCardProps) {
+  const num = String(number).padStart(2, '0');
   return (
-    <Link href={href} className={styles.card}>
-      <div className={styles.iconWrap} aria-hidden="true">
-        {icon}
+    <Link href={href} className={styles.row}>
+      <div className={styles.bgWrapper}>
+        <Image
+          src={image}
+          alt=""
+          fill
+          style={{ objectFit: 'cover', objectPosition: 'center center' }}
+          sizes="(min-width: 1280px) 1280px, 100vw"
+        />
       </div>
-      <h3 className={styles.title}>{title}</h3>
-      <p className={styles.description}>{description}</p>
-      <span className={styles.link}>
-        Află mai mult <span aria-hidden="true">→</span>
-      </span>
+      <div className={styles.overlay} />
+      <span className={styles.num} aria-hidden="true">{num}</span>
+      <span className={styles.vline} aria-hidden="true" />
+      <div className={styles.body}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.desc}>{description}</p>
+      </div>
+      <span className={styles.arrow} aria-hidden="true">→</span>
     </Link>
   );
 }

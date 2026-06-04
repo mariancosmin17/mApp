@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import ContactForm from '@/components/ui/ContactForm/ContactForm';
+import Image from 'next/image';
 import FaqSection from '@/components/ui/FaqSection/FaqSection';
 import JsonLd from '@/components/seo/JsonLd';
 import styles from './page.module.css';
@@ -49,34 +49,34 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    icon: '⛏️',
     title: 'Săpături Fundații',
     desc: 'Săpături precise pentru fundații case, blocuri, hale industriale și alte construcții. Respectăm cotele proiectate și lucrăm rapid.',
+    image: '/e1.jpg',
   },
   {
-    icon: '📐',
     title: 'Nivelări Teren',
     desc: 'Nivelarea și pregătirea terenului pentru construcții, parcări, terenuri sportive, grădini. Rezultat uniform, pregătit pentru etapa următoare.',
+    image: '/e2.webp',
   },
   {
-    icon: '🔨',
     title: 'Demolări',
     desc: 'Demolări parțiale sau totale ale construcțiilor vechi, ziduri, anexe. Evacuarea și transportul molozului incluse la cerere.',
+    image: '/e3.jpg',
   },
   {
-    icon: '🏔️',
     title: 'Terasamente',
     desc: 'Lucrări complexe de modificare a reliefului: rambleuri, debleiuri, terase pentru construcții pe teren în pantă.',
+    image: '/e4.jpg',
   },
   {
-    icon: '🌊',
     title: 'Drenaje & Canalizări',
     desc: 'Săpături pentru rețele de drenaj, canalizare și conducte subterane. Lucrăm atent pentru a evita deteriorarea rețelelor existente.',
+    image: '/e5.webp',
   },
   {
-    icon: '🚧',
     title: 'Lucrări de Drum',
     desc: 'Amenajare alei de acces, parcări, drumuri de exploatare. De la pregătirea patului de fundație până la compactare.',
+    image: '/e6.webp',
   },
 ];
 
@@ -107,33 +107,12 @@ const faqs = [
   },
 ];
 
-const phone = process.env.NEXT_PUBLIC_PHONE ?? '0756523427';
-
 export default function ExcavatiiterasamentePage() {
   return (
     <>
       <JsonLd data={schemas} />
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div className="container">
-          <div className={styles.breadcrumb}>
-            <Link href="/">Acasă</Link>
-            <span>/</span>
-            <span>Excavații & Terasamente</span>
-          </div>
-          <h1>Excavații &amp; Terasamente în Târgu Neamț</h1>
-          <p className={styles.heroSubtitle}>
-            Săpături fundații, nivelări teren, demolări și terasamente —
-            executate profesional cu utilaje proprii în județul Neamț.
-          </p>
-          <a href={`tel:${phone}`} className="btn btn--primary">
-            📞 Sună acum: {phone}
-          </a>
-        </div>
-      </section>
 
-      {/* Services grid */}
-      <section className="section">
+      <section className={`section ${styles.servicesSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="label">Lucrări executate</span>
@@ -142,11 +121,28 @@ export default function ExcavatiiterasamentePage() {
               Echipă cu experiență, utilaje proprii, lucrări la cheie. Operăm în
               Târgu Neamț și împrejurimi.
             </p>
+            <p className={styles.ctaInline}>
+              Ai nevoie de o ofertă personalizată?{' '}
+              <Link href="/contact" className={styles.ctaInlineLink}>
+                Solicită ofertă →
+              </Link>
+            </p>
           </div>
+
           <div className={styles.servicesGrid}>
-            {services.map((s) => (
+            {services.map((s, i) => (
               <div key={s.title} className={styles.serviceCard}>
-                <span className={styles.serviceIcon}>{s.icon}</span>
+                <div className={styles.cardBgWrapper}>
+                  <Image
+                    src={s.image}
+                    alt=""
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 600px) 50vw, 100vw"
+                  />
+                </div>
+                <div className={styles.cardOverlay} />
+                <span className={styles.serviceNum}>{String(i + 1).padStart(2, '0')}</span>
                 <h3 className={styles.serviceTitle}>{s.title}</h3>
                 <p className={styles.serviceDesc}>{s.desc}</p>
               </div>
@@ -155,57 +151,9 @@ export default function ExcavatiiterasamentePage() {
         </div>
       </section>
 
-      {/* Process + Form */}
-      <section className="section section--gray">
-        <div className="container">
-          <div className={styles.twoCol}>
-            <div>
-              <h2>Cum funcționează?</h2>
-              <div className={styles.steps}>
-                <div className={styles.step}>
-                  <div className={styles.stepNum}>1</div>
-                  <div>
-                    <strong>Ne contactezi</strong>
-                    <p>Telefon sau formular — descrie lucrarea și adresa</p>
-                  </div>
-                </div>
-                <div className={styles.step}>
-                  <div className={styles.stepNum}>2</div>
-                  <div>
-                    <strong>Evaluare la fața locului</strong>
-                    <p>Venim să vedem terenul și îți dăm un deviz estimativ gratuit</p>
-                  </div>
-                </div>
-                <div className={styles.step}>
-                  <div className={styles.stepNum}>3</div>
-                  <div>
-                    <strong>Programăm lucrarea</strong>
-                    <p>Stabilim data de start și durata estimată</p>
-                  </div>
-                </div>
-                <div className={styles.step}>
-                  <div className={styles.stepNum}>4</div>
-                  <div>
-                    <strong>Executăm profesional</strong>
-                    <p>Lucrare curată, la timp, fără surprize neplăcute</p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.ctaPhone}>
-                <a href={`tel:${phone}`} className="btn btn--primary">
-                  📞 {phone}
-                </a>
-              </div>
-            </div>
-            <ContactForm
-              defaultService="Excavații & terasamente"
-              title="Solicită deviz gratuit"
-            />
-          </div>
-        </div>
-      </section>
-
-      <FaqSection items={faqs} title="Întrebări despre Excavații & Terasamente" />
+      <div className={styles.faqWrapper}>
+        <FaqSection items={faqs} title="Întrebări despre Excavații & Terasamente" />
+      </div>
     </>
   );
 }

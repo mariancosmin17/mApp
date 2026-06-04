@@ -1,9 +1,12 @@
 import Link from 'next/link';
+import { PhoneIcon, MapPinIcon, ChatIcon } from '@/components/ui/icons';
+import PhoneDisperse from '@/components/ui/phone-disperse';
 import styles from './Footer.module.css';
 
 const phone = process.env.NEXT_PUBLIC_PHONE ?? '0756523427';
 const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP ?? '40756523427';
-const address = process.env.NEXT_PUBLIC_ADDRESS ?? 'Târgu Neamț, Neamț';
+const address = process.env.NEXT_PUBLIC_ADDRESS ?? 'Strada Independenței Nr. 29, Târgu Neamț, Neamț 615200';
+const mapsUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}`;
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -23,15 +26,20 @@ export default function Footer() {
             </p>
             <ul className={styles.contactList}>
               <li className={styles.contactItem}>
-                <span className={styles.contactIcon}>📍</span>
-                <span>{address}</span>
+                <span className={styles.contactIcon}><MapPinIcon size={17} /></span>
+                <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
+                  {address}
+                </a>
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactIcon}>📞</span>
-                <a href={`tel:${phone}`}>{phone}</a>
+                <span className={styles.contactIcon}><PhoneIcon size={17} /></span>
+                <PhoneDisperse
+                  phone={phone}
+                  className="text-[0.9rem] font-normal tracking-normal text-white/75"
+                />
               </li>
               <li className={styles.contactItem}>
-                <span className={styles.contactIcon}>💬</span>
+                <span className={styles.contactIcon}><ChatIcon size={17} /></span>
                 <a
                   href={`https://wa.me/${whatsapp}`}
                   target="_blank"

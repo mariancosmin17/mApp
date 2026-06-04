@@ -1,12 +1,9 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { MoveRight, PhoneCall } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
 import { AnimatedText } from "@/components/ui/animated-shiny-text";
-
-const phone = process.env.NEXT_PUBLIC_PHONE ?? "0756523427";
+import styles from "./animated-hero.module.css";
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -17,17 +14,14 @@ function Hero() {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (titleNumber === titles.length - 1) {
-        setTitleNumber(0);
-      } else {
-        setTitleNumber(titleNumber + 1);
-      }
+      setTitleNumber((prev) => (prev === titles.length - 1 ? 0 : prev + 1));
     }, 2000);
     return () => clearTimeout(timeoutId);
   }, [titleNumber, titles]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background */}
       <Image
         src="/background.png"
         alt="MASERCOM — Utilaje de construcții"
@@ -36,76 +30,74 @@ function Hero() {
         priority
         quality={90}
       />
-      <div className="absolute inset-0 bg-[#0c1220]/68 z-[1]" />
 
-      <div className="relative z-[2] w-full">
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-[#080d18]/72 z-[1]" />
+
+      {/* Film grain texture */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-[2] pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "200px 200px",
+          opacity: 0.032,
+        }}
+      />
+
+      {/* Bottom vignette — fades to white for smooth transition to next section */}
+      <div
+        aria-hidden="true"
+        className={`absolute bottom-0 left-0 right-0 z-[3] pointer-events-none ${styles.fadeVignette}`}
+      />
+
+      {/* Content */}
+      <div className="relative z-[4] w-full">
         <div className="container mx-auto px-6">
-          <div className="flex gap-6 py-32 lg:py-44 items-center justify-center flex-col">
-            <div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 border border-white/20 text-white/70 hover:text-white hover:border-white/40 text-sm font-medium px-5 py-2 rounded-full transition-all duration-200 bg-white/5 backdrop-blur-sm"
-              >
-                Solicită o ofertă gratuită <MoveRight className="w-4 h-4" />
-              </Link>
+          <div className="flex gap-0 pt-24 pb-28 lg:pt-28 lg:pb-36 items-center justify-center flex-col">
+
+            {/* Top label */}
+            <p
+              className="text-white/35 text-xs font-medium tracking-[0.25em] uppercase mb-10"
+              style={{ letterSpacing: "0.25em" }}
+            >
+              Târgu Neamț &nbsp;·&nbsp; Județul Neamț
+            </p>
+
+            {/* MASERCOM — shiny animated */}
+            <AnimatedText text="MASERCOM" className="py-0" />
+
+            {/* Thin divider */}
+            <div className="w-24 h-px bg-white/15 my-5" />
+
+            {/* Cycling words */}
+            <div className="relative flex justify-center overflow-hidden h-12 md:h-16 w-full">
+              {titles.map((title, index) => (
+                <motion.span
+                  key={index}
+                  className="absolute text-xl md:text-3xl font-semibold text-blue-300/90 tracking-[0.18em] uppercase"
+                  initial={{ opacity: 0, y: -60 }}
+                  transition={{ type: "spring", stiffness: 45, damping: 14 }}
+                  animate={
+                    titleNumber === index
+                      ? { y: 0, opacity: 1 }
+                      : { y: titleNumber > index ? -60 : 60, opacity: 0 }
+                  }
+                >
+                  {title}
+                </motion.span>
+              ))}
             </div>
 
-            <div className="flex gap-3 flex-col items-center">
-              <AnimatedText
-                text="MASERCOM"
-                className="py-0"
-                hoverEffect
-              />
-
-              <div className="relative flex w-full justify-center overflow-hidden text-center h-14 md:h-20">
-                {titles.map((title, index) => (
-                  <motion.span
-                    key={index}
-                    className="absolute text-2xl md:text-4xl font-semibold text-blue-300 tracking-wider uppercase"
-                    initial={{ opacity: 0, y: "-100" }}
-                    transition={{ type: "spring", stiffness: 50 }}
-                    animate={
-                      titleNumber === index
-                        ? { y: 0, opacity: 1 }
-                        : {
-                            y: titleNumber > index ? -80 : 80,
-                            opacity: 0,
-                          }
-                    }
-                  >
-                    {title}
-                  </motion.span>
-                ))}
-              </div>
-
-              <p className="text-base md:text-xl leading-relaxed tracking-tight text-white/55 max-w-xl text-center mt-2">
-                Fundații solide pentru proiecte mari. Transport agregate, închiriere utilaje
-                și lucrări de excavații în Târgu Neamț și județul Neamț.
-              </p>
-            </div>
-
-            <div className="flex flex-row gap-3 flex-wrap justify-center mt-2">
-              <a
-                href={`tel:${phone}`}
-                className="inline-flex items-center gap-3 h-11 px-8 rounded-md border border-white/30 bg-white/8 text-white font-medium text-sm hover:bg-white/15 transition-all duration-200 backdrop-blur-sm"
-              >
-                <PhoneCall className="w-4 h-4" /> Sună acum
-              </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 h-11 px-8 rounded-md bg-blue-600 text-white font-medium text-sm hover:bg-blue-700 transition-all duration-200 shadow-lg shadow-blue-600/30"
-              >
-                Solicită ofertă <MoveRight className="w-4 h-4" />
-              </Link>
-            </div>
+            {/* Tagline */}
+            <p className="text-sm md:text-base text-white/45 max-w-sm text-center mt-7 leading-relaxed tracking-wide">
+              Fundații solide pentru proiecte mari.
+            </p>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[2] flex flex-col items-center gap-1 text-white/30 text-xs animate-bounce">
-        <span>Scroll</span>
-        <span>↓</span>
-      </div>
     </section>
   );
 }

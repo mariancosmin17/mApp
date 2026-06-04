@@ -34,6 +34,32 @@
   margin-bottom: var(--spacing-lg);
 }
 
+.productsSection {
+  padding-bottom: 0;
+}
+
+.faqWrapper {
+  margin-top: calc(var(--spacing-3xl) * -0.5);
+}
+
+.ctaInline {
+  margin-top: var(--spacing-sm);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--color-gray);
+}
+
+.ctaInlineLink {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.ctaInlineLink:hover {
+  opacity: 0.75;
+}
+
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -41,34 +67,104 @@
 }
 
 .productCard {
+  position: relative;
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-sm);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-top: 3px solid var(--color-primary);
-  transition: box-shadow var(--transition), transform var(--transition);
+  overflow: hidden;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+
+.cardBgWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cardBgWrapper img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+  opacity: 0.75;
+}
+
+.productCard:hover .cardBgWrapper img {
+  transform: scale(1.06);
+  opacity: 1;
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg,
+      #ffffff 20%,
+      rgba(255, 255, 255, 0.9) 42%,
+      rgba(255, 255, 255, 0.5) 65%,
+      rgba(255, 255, 255, 0.15) 100%);
+  transition: background 0.4s ease;
+}
+
+.productCard:hover .cardOverlay {
+  background: linear-gradient(135deg,
+      #ffffff 12%,
+      rgba(255, 255, 255, 0.8) 38%,
+      rgba(255, 255, 255, 0.3) 62%,
+      rgba(255, 255, 255, 0.05) 100%);
+}
+
+.productCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--color-primary);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--transition);
+  z-index: 4;
 }
 
 .productCard:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
+  border-color: rgba(0, 91, 179, 0.25);
 }
 
-.productIcon {
-  font-size: 2.5rem;
+.productCard:hover::before {
+  transform: scaleY(1);
+}
+
+.productNum {
   display: block;
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
   margin-bottom: var(--spacing-sm);
 }
 
 .productName {
-  font-size: 1.15rem;
+  position: relative;
+  z-index: 2;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 800;
   margin-bottom: 0.5rem;
 }
 
 .productDesc {
+  position: relative;
+  z-index: 2;
   font-size: 0.9rem;
-  color: var(--color-gray);
+  color: var(--color-dark);
   line-height: 1.6;
 }
 

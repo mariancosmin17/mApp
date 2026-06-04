@@ -24,8 +24,11 @@ export default function Header() {
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
-        <Link href="/" className={styles.logo} onClick={() => setMenuOpen(false)}>
-          MASER<span className={styles.logoAccent}>COM</span>
+        <Link href="/" className={styles.logo} onClick={() => setMenuOpen(false)} aria-label="MASERCOM — Acasă">
+          <span className={styles.logoMark}>
+            M<span className={styles.logoAccent}>C</span>
+            <span className={styles.logoDot} aria-hidden="true" />
+          </span>
         </Link>
 
         {/* Desktop Nav */}
@@ -47,8 +50,13 @@ export default function Header() {
           className={styles.phoneBtn}
           aria-label={`Sună la ${phone}`}
         >
-          <span className={styles.phoneIcon}>📞</span>
-          {phone}
+          <span className={styles.phoneIconWrap} aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span className={styles.phoneText}>
+            <span className={styles.phoneLabel}>Sună acum</span>
+            <span className={styles.phoneNumber}>{phone}</span>
+          </span>
         </a>
 
         {/* Hamburger — mobile */}
@@ -85,7 +93,7 @@ export default function Header() {
           className={styles.mobilePhone}
           onClick={() => setMenuOpen(false)}
         >
-          📞 {phone}
+          {phone}
         </a>
       </nav>
     </header>

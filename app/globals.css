@@ -1,7 +1,12 @@
 @import "tailwindcss";
+@plugin "tailwindcss-animate";
 
 @theme {
   --font-sans: var(--font-geist), 'Geist', ui-sans-serif, system-ui, sans-serif;
+
+  /* Accordion (shadcn) keyframes */
+  --animate-accordion-down: accordion-down 0.25s ease-out;
+  --animate-accordion-up: accordion-up 0.25s ease-out;
 
   /* Steel Blue palette */
   --color-blue-50: #eff6ff;
@@ -34,26 +39,39 @@
   --color-background: #ffffff;
   --color-foreground: #0f172a;
   --color-muted-foreground: #64748b;
-  --color-ring: #3b82f6;
+  --color-ring: #005BB3;
   --color-border: #e2e8f0;
   --color-input: #e2e8f0;
-  --color-primary: #3b82f6;
+  --color-primary: #005BB3;
   --color-primary-foreground: #ffffff;
   --color-secondary: #f1f5f9;
   --color-secondary-foreground: #0f172a;
   --color-muted: #f1f5f9;
-  --color-accent: #3b82f6;
+  --color-accent: #005BB3;
   --color-accent-foreground: #ffffff;
   --color-destructive: #ef4444;
+
+  /* Dark popover (navbar dropdown surface) */
+  --color-popover: #111a2e;
+  --color-popover-foreground: #ffffff;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
 }
 
 /* ===== DESIGN TOKENS (CSS Modules compatibility) ===== */
 :root {
-  --color-primary: #3b82f6;
-  --color-primary-dark: #2563eb;
-  --color-primary-light: #93c5fd;
-  --color-accent: #60a5fa;
-  --color-accent-dark: #3b82f6;
+  --color-primary: #005BB3;
+  --color-primary-dark: #004a93;
+  --color-primary-light: #3380cc;
+  --color-accent: #1a6dc5;
+  --color-accent-dark: #005BB3;
 
   --color-dark: #0c1220;
   --color-gray-dark: #1e293b;
@@ -133,9 +151,11 @@ p {
   line-height: 1.7;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 img, video {
@@ -191,12 +211,12 @@ button {
 .btn--primary {
   background-color: var(--color-primary);
   color: var(--color-white);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 91, 179, 0.35);
 }
 
 .btn--primary:hover {
   background-color: var(--color-primary-dark);
-  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.45);
+  box-shadow: 0 6px 24px rgba(0, 91, 179, 0.45);
 }
 
 .btn--outline {
@@ -213,7 +233,7 @@ button {
 .btn--accent {
   background-color: var(--color-primary);
   color: var(--color-white);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 91, 179, 0.35);
 }
 
 .btn--accent:hover {

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import ContactForm from '@/components/ui/ContactForm/ContactForm';
+import Image from 'next/image';
 import FaqSection from '@/components/ui/FaqSection/FaqSection';
 import JsonLd from '@/components/seo/JsonLd';
 import styles from './page.module.css';
@@ -49,29 +49,29 @@ export const metadata: Metadata = {
 
 const products = [
   {
-    icon: '🏖️',
     name: 'Nisip',
     desc: 'Nisip de construcție pentru zidărie, tencuieli, betonare și amenajări. Calitate constantă, livrat direct la șantier.',
+    image: '/a1.webp',
   },
   {
-    icon: '🪨',
     name: 'Balast',
     desc: 'Balast sortat pentru fundații, umplutură și lucrări de drumuri. Disponibil în cantități mari.',
+    image: '/a2.jpg',
   },
   {
-    icon: '💎',
     name: 'Piatră Spartă',
     desc: 'Piatră spartă (criblură) pentru betoane, drumuri, trotuare și fundații. Diverse granulații disponibile.',
+    image: '/a3.jpg',
   },
   {
-    icon: '🟤',
     name: 'Pietriș',
     desc: 'Pietriș sortat pentru drenaje, alei, parcări și lucrări de amenajare exterioară.',
+    image: '/a4.jpg',
   },
   {
-    icon: '🌱',
     name: 'Pământ',
     desc: 'Pământ pentru umplutură, nivelare teren sau amenajare grădini. Disponibil în cantități variabile.',
+    image: '/a5.webp',
   },
 ];
 
@@ -102,33 +102,13 @@ const faqs = [
   },
 ];
 
-const phone = process.env.NEXT_PUBLIC_PHONE ?? '0756523427';
-
 export default function TransportAgregatePage() {
   return (
     <>
       <JsonLd data={schemas} />
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div className="container">
-          <div className={styles.breadcrumb}>
-            <Link href="/">Acasă</Link>
-            <span>/</span>
-            <span>Transport Agregate</span>
-          </div>
-          <h1>Transport Agregate în Târgu Neamț</h1>
-          <p className={styles.heroSubtitle}>
-            Nisip, balast, piatră spartă, pietriș și pământ — livrate rapid la
-            șantierul tău. Acoperim Târgu Neamț și o rază de ~30 km.
-          </p>
-          <a href={`tel:${phone}`} className="btn btn--primary">
-            📞 Sună acum: {phone}
-          </a>
-        </div>
-      </section>
 
       {/* Products */}
-      <section className="section">
+      <section className={`section ${styles.productsSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="label">Ce livrăm</span>
@@ -137,12 +117,28 @@ export default function TransportAgregatePage() {
               Toate agregatele sunt de calitate, livrate cu basculanta direct la
               adresa indicată.
             </p>
+            <p className={styles.ctaInline}>
+              Ai nevoie de o ofertă personalizată?{' '}
+              <Link href="/contact" className={styles.ctaInlineLink}>
+                Solicită ofertă →
+              </Link>
+            </p>
           </div>
 
           <div className={styles.productsGrid}>
-            {products.map((p) => (
+            {products.map((p, i) => (
               <div key={p.name} className={styles.productCard}>
-                <span className={styles.productIcon}>{p.icon}</span>
+                <div className={styles.cardBgWrapper}>
+                  <Image
+                    src={p.image}
+                    alt=""
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 600px) 50vw, 100vw"
+                  />
+                </div>
+                <div className={styles.cardOverlay} />
+                <span className={styles.productNum}>{String(i + 1).padStart(2, '0')}</span>
                 <h3 className={styles.productName}>{p.name}</h3>
                 <p className={styles.productDesc}>{p.desc}</p>
               </div>
@@ -151,57 +147,10 @@ export default function TransportAgregatePage() {
         </div>
       </section>
 
-      {/* Why us + Form */}
-      <section className="section section--gray">
-        <div className="container">
-          <div className={styles.twoCol}>
-            <div className={styles.whyUs}>
-              <h2>De ce să alegi MASERCOM?</h2>
-              <ul className={styles.benefitsList}>
-                <li>
-                  <span className={styles.check}>✓</span>
-                  <div>
-                    <strong>Livrare rapidă</strong>
-                    <p>Aceeași zi sau ziua următoare în funcție de disponibilitate</p>
-                  </div>
-                </li>
-                <li>
-                  <span className={styles.check}>✓</span>
-                  <div>
-                    <strong>Cantități flexibile</strong>
-                    <p>De la 1 tonă pentru persoane fizice până la zeci de tone pentru șantiere mari</p>
-                  </div>
-                </li>
-                <li>
-                  <span className={styles.check}>✓</span>
-                  <div>
-                    <strong>Prețuri corecte</strong>
-                    <p>Transparență totală — fără costuri ascunse, factură la cerere</p>
-                  </div>
-                </li>
-                <li>
-                  <span className={styles.check}>✓</span>
-                  <div>
-                    <strong>Experiență locală</strong>
-                    <p>Cunoaștem drumurile și șantierele din județ — livrăm fără surprize</p>
-                  </div>
-                </li>
-              </ul>
 
-              <div className={styles.ctaPhone}>
-                <span>Comandă rapid:</span>
-                <a href={`tel:${phone}`} className="btn btn--primary">
-                  📞 {phone}
-                </a>
-              </div>
-            </div>
-
-            <ContactForm defaultService="Transport agregate" />
-          </div>
-        </div>
-      </section>
-
-      <FaqSection items={faqs} title="Întrebări despre Transport Agregate" />
+      <div className={styles.faqWrapper}>
+        <FaqSection items={faqs} title="Întrebări despre Transport Agregate" />
+      </div>
     </>
   );
 }

@@ -61,8 +61,11 @@
 }
 
 .contactIcon {
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-primary);
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 /* Link columns */

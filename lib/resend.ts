@@ -27,8 +27,8 @@ export function buildEmailHtml(data: ContactEmailData): string {
     <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
     <body style="font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; margin: 0;">
       <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-        <div style="background: #e65100; padding: 24px 32px;">
-          <h1 style="color: white; margin: 0; font-size: 22px;">📩 Mesaj nou de pe site</h1>
+        <div style="background: #005BB3; padding: 24px 32px;">
+          <h1 style="color: white; margin: 0; font-size: 22px;">Mesaj nou de pe site</h1>
           <p style="color: rgba(255,255,255,0.8); margin: 6px 0 0; font-size: 14px;">MASERCOM — masercom.ro</p>
         </div>
         <div style="padding: 32px;">
@@ -40,14 +40,14 @@ export function buildEmailHtml(data: ContactEmailData): string {
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: bold; color: #333;">Telefon:</td>
               <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
-                <a href="tel:${data.phone}" style="color: #e65100; font-weight: bold;">${data.phone}</a>
+                <a href="tel:${data.phone}" style="color: #005BB3; font-weight: bold;">${data.phone}</a>
               </td>
             </tr>
             ${data.email ? `
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-weight: bold; color: #333;">Email:</td>
               <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #555;">
-                <a href="mailto:${data.email}" style="color: #e65100;">${data.email}</a>
+                <a href="mailto:${data.email}" style="color: #005BB3;">${data.email}</a>
               </td>
             </tr>` : ''}
             ${data.service ? `

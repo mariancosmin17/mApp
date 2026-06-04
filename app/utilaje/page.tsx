@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import ContactForm from '@/components/ui/ContactForm/ContactForm';
+import Image from 'next/image';
 import FaqSection from '@/components/ui/FaqSection/FaqSection';
 import JsonLd from '@/components/seo/JsonLd';
 import styles from './page.module.css';
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
 const utilaje = [
   {
     id: 'nacela',
-    icon: '🦺',
     name: 'Nacelă Articulată',
+    image: '/u1.jpg',
     description:
       'Nacelă autopropulsată pentru lucrări la înălțime — reparații acoperișuri, vopsit fațade, tăieri arbori, montaj panouri, instalații electrice. Sigură, eficientă, cu rază mare de acțiune.',
     uses: ['Reparații și vopsit fațade', 'Lucrări la acoperișuri', 'Montaj panouri și reclame', 'Tăieri și corecturi arbori', 'Instalații electrice la înălțime'],
@@ -59,8 +59,8 @@ const utilaje = [
   },
   {
     id: 'basculanta-macara',
-    icon: '🏗️',
     name: 'Basculantă cu Macară',
+    image: '/u2.webp',
     description:
       'Combinație unică: basculantă pentru transport agregate și macară pentru descărcare în locuri greu accesibile. Ideal pentru șantiere cu spațiu limitat sau materiale grele.',
     uses: ['Transport și descărcare agregate', 'Șantiere cu acces dificil', 'Transport materiale grele', 'Descărcare precisă în spații înguste'],
@@ -68,8 +68,8 @@ const utilaje = [
   },
   {
     id: 'buldoexcavator',
-    icon: '🚜',
     name: 'Buldoexcavator',
+    image: '/u3.jpg',
     description:
       'Buldoexcavator polivalent pentru săpături, demolări ușoare, nivelare teren și încărcare materiale. Eficient pe orice tip de teren.',
     uses: ['Săpături fundații', 'Nivelare și amenajare teren', 'Demolări ușoare', 'Încărcare și transport pământ', 'Lucrări de drenaj'],
@@ -77,8 +77,8 @@ const utilaje = [
   },
   {
     id: 'miniexcavator',
-    icon: '⚙️',
     name: 'Miniexcavator',
+    image: '/u4.webp',
     description:
       'Miniexcavator compact — perfect pentru spații înguste unde utilajele mari nu pot accesa. Ideal pentru grădini, curți, fundații mici și lucrări urban.',
     uses: ['Săpături în spații înguste', 'Fundații case mici', 'Lucrări în grădini și curți', 'Instalații rețele (apă, gaz, curent)', 'Demolări parțiale'],
@@ -113,33 +113,13 @@ const faqs = [
   },
 ];
 
-const phone = process.env.NEXT_PUBLIC_PHONE ?? '0756523427';
-
 export default function UtilajePage() {
   return (
     <>
       <JsonLd data={schemas} />
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div className="container">
-          <div className={styles.breadcrumb}>
-            <Link href="/">Acasă</Link>
-            <span>/</span>
-            <span>Utilaje</span>
-          </div>
-          <h1>Închiriere Utilaje în Târgu Neamț</h1>
-          <p className={styles.heroSubtitle}>
-            Nacelă, basculantă cu macară, buldoexcavator și miniexcavator —
-            cu sau fără operator. Disponibile în Târgu Neamț și ~30 km împrejur.
-          </p>
-          <a href={`tel:${phone}`} className="btn btn--primary">
-            📞 Sună acum: {phone}
-          </a>
-        </div>
-      </section>
 
       {/* Utilaje cards */}
-      <section className="section">
+      <section className={`section ${styles.utilajeSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="label">Parcul nostru</span>
@@ -157,7 +137,13 @@ export default function UtilajePage() {
                 className={`${styles.utilajCard} ${i % 2 === 1 ? styles.reversed : ''}`}
               >
                 <div className={styles.utilajVisual}>
-                  <div className={styles.utilajIcon}>{u.icon}</div>
+                  <Image
+                    src={u.image}
+                    alt={u.name}
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    sizes="300px"
+                  />
                 </div>
                 <div className={styles.utilajContent}>
                   <h2 className={styles.utilajName}>{u.name}</h2>
@@ -167,7 +153,7 @@ export default function UtilajePage() {
                     <ul>
                       {u.uses.map((use) => (
                         <li key={use}>
-                          <span className={styles.bullet}>▸</span> {use}
+                          <span className={styles.bullet} aria-hidden="true" /> {use}
                         </li>
                       ))}
                     </ul>
@@ -175,9 +161,9 @@ export default function UtilajePage() {
                   <div className={styles.utilajSpecs}>
                     <span className={styles.specsLabel}>Specificații:</span> {u.specs}
                   </div>
-                  <a href={`tel:${phone}`} className="btn btn--primary" style={{ marginTop: '1rem', display: 'inline-flex' }}>
-                    📞 Solicită ofertă
-                  </a>
+                  <div style={{ marginTop: '1rem' }}>
+                    <Link href="/contact" className={styles.ctaLink}>Solicită ofertă →</Link>
+                  </div>
                 </div>
               </div>
             ))}
@@ -185,39 +171,9 @@ export default function UtilajePage() {
         </div>
       </section>
 
-      {/* Form */}
-      <section className="section section--gray">
-        <div className="container">
-          <div className={styles.formSection}>
-            <div>
-              <h2>Solicită o Ofertă de Închiriere</h2>
-              <p style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>
-                Spune-ne ce utilaj ai nevoie, pentru câte zile și unde — îți
-                trimitem o ofertă în cel mai scurt timp.
-              </p>
-              <div className={styles.infoBox}>
-                <div className={styles.infoItem}>
-                  <span>📞</span>
-                  <div>
-                    <strong>Telefon direct</strong>
-                    <a href={`tel:${phone}`}>{phone}</a>
-                  </div>
-                </div>
-                <div className={styles.infoItem}>
-                  <span>⏰</span>
-                  <div>
-                    <strong>Program</strong>
-                    <span>Luni–Sâmbătă, 7:00–18:00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <ContactForm defaultService="Închiriere nacelă" title="Solicită ofertă utilaje" />
-          </div>
-        </div>
-      </section>
-
-      <FaqSection items={faqs} title="Întrebări despre Închirierea Utilajelor" />
+      <div className={styles.faqWrapper}>
+        <FaqSection items={faqs} title="Întrebări despre Închirierea Utilajelor" />
+      </div>
     </>
   );
 }

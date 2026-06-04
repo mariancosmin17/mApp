@@ -16,8 +16,8 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
   (
     {
       text,
-      gradientColors = "linear-gradient(90deg, #3b82f6, #f8fafc, #60a5fa, #f8fafc, #3b82f6)",
-      gradientAnimationDuration = 2,
+      gradientColors = "linear-gradient(90deg, #002f5e, #f8fafc, #0d4f8a, #f8fafc, #002f5e)",
+      gradientAnimationDuration = 2.5,
       hoverEffect = false,
       className,
       textClassName,
@@ -28,15 +28,14 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
     const [isHovered, setIsHovered] = React.useState(false);
 
     const textVariants: Variants = {
-      initial: {
-        backgroundPosition: "0 0",
-      },
+      initial: { backgroundPosition: "0 0" },
       animate: {
         backgroundPosition: "200% 0",
         transition: {
           duration: gradientAnimationDuration,
           repeat: Infinity,
           repeatType: "reverse" as const,
+          ease: "linear",
         },
       },
     };
@@ -48,17 +47,15 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
         {...props}
       >
         <motion.h1
-          className={cn(
-            "text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] leading-none font-bold tracking-tight",
-            textClassName
-          )}
+          className={cn("leading-none font-black", textClassName)}
           style={{
+            fontSize: "clamp(3rem, 10vw, 8.5rem)",
+            letterSpacing: "0.05em",
             background: gradientColors,
             backgroundSize: "200% auto",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
-            textShadow: isHovered ? "0 0 8px rgba(255,255,255,0.3)" : "none",
           }}
           variants={textVariants}
           initial="initial"

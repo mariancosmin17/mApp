@@ -15,21 +15,56 @@
   gap: var(--spacing-lg);
 }
 
-/* Logo */
+/* Logo — refined "MC" monogram */
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  font-family: var(--font-heading);
-  font-weight: 900;
-  font-size: 1.5rem;
-  color: var(--color-white);
-  letter-spacing: -0.5px;
   flex-shrink: 0;
+  text-decoration: none;
+}
+
+.logoMark {
+  position: relative;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.7rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-white);
+  transition: opacity var(--transition);
+}
+
+.logoMark::before {
+  content: '';
+  position: absolute;
+  left: -0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 1.4rem;
+  background-color: var(--color-primary);
+  opacity: 0;
+  transition: opacity var(--transition), left var(--transition);
+}
+
+.logo:hover .logoMark::before {
+  opacity: 1;
+  left: -0.6rem;
 }
 
 .logoAccent {
   color: var(--color-primary);
+}
+
+.logoDot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  margin-left: 3px;
+  vertical-align: top;
+  margin-top: 2px;
 }
 
 /* Navigation */
@@ -56,29 +91,62 @@
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Phone CTA in header */
+/* Phone CTA in header — refined, ghost style */
 .phoneBtn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  padding: 0.625rem 1.25rem;
+  gap: 0.625rem;
+  padding: 0.4rem 0.95rem 0.4rem 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-full);
-  transition: background-color var(--transition), transform var(--transition);
+  background-color: rgba(255, 255, 255, 0.03);
+  transition: border-color var(--transition), background-color var(--transition);
   flex-shrink: 0;
 }
 
 .phoneBtn:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-1px);
+  border-color: rgba(0, 91, 179, 0.55);
+  background-color: rgba(0, 91, 179, 0.08);
 }
 
-.phoneIcon {
-  font-size: 1rem;
+.phoneIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.phoneBtn:hover .phoneIconWrap {
+  transform: scale(1.06);
+}
+
+.phoneText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.phoneLabel {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.phoneNumber {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 0.01em;
 }
 
 /* Hamburger */

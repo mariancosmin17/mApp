@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import ContactForm from '@/components/ui/ContactForm/ContactForm';
+import WhatsAppButton from '@/components/layout/WhatsAppButton/WhatsAppButton';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -12,118 +12,132 @@ export const metadata: Metadata = {
 
 const phone = process.env.NEXT_PUBLIC_PHONE ?? '0756523427';
 const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP ?? '40756523427';
-const address = process.env.NEXT_PUBLIC_ADDRESS ?? 'Târgu Neamț, Neamț';
+const address = process.env.NEXT_PUBLIC_ADDRESS ?? 'Strada Independenței Nr. 29, Târgu Neamț, Neamț 615200';
+const mapsUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}`;
+
+const phoneDisplay = phone.replace(/\D/g, '').length === 10
+  ? `${phone.slice(0, 4)} ${phone.slice(4, 7)} ${phone.slice(7)}`
+  : phone;
+
+const PhoneIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+  </svg>
+);
+
+const ChatIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+);
+
+const PinIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+  </svg>
+);
+
+const ClockIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+  </svg>
+);
 
 export default function ContactPage() {
   return (
     <>
-      <section className={styles.hero}>
-        <div className="container">
-          <div className={styles.breadcrumb}>
-            <Link href="/">Acasă</Link>
-            <span>/</span>
-            <span>Contact</span>
-          </div>
-          <h1>Contactează-ne</h1>
-          <p className={styles.heroSubtitle}>
-            Suntem disponibili pentru orice întrebare sau solicitare de ofertă.
-            Răspundem rapid!
-          </p>
-        </div>
-      </section>
-
       <section className="section">
         <div className="container">
+          <div className="section-header">
+            <span className="label">Contactați-ne</span>
+            <h2>Hai să Lucrăm Împreună</h2>
+            <p>
+              Trimite-ne un mesaj sau sună direct. Răspundem rapid, de luni
+              până sâmbătă, 7:00–18:00.
+            </p>
+          </div>
+
           <div className={styles.grid}>
-            {/* Left: info + map */}
-            <div className={styles.infoCol}>
-              <h2 className={styles.infoTitle}>Date de Contact</h2>
-
-              <div className={styles.contactCards}>
-                <a href={`tel:${phone}`} className={styles.contactCard}>
-                  <div className={styles.contactIcon}>📞</div>
-                  <div>
-                    <span className={styles.contactLabel}>Telefon</span>
-                    <span className={styles.contactValue}>{phone}</span>
-                    <span className={styles.contactHint}>Apelați direct</span>
-                  </div>
-                </a>
-
-                <a
-                  href={`https://wa.me/${whatsapp}?text=Bună ziua, sunt interesat de serviciile MASERCOM.`}
-                  className={styles.contactCard}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className={`${styles.contactIcon} ${styles.whatsappIcon}`}>💬</div>
-                  <div>
-                    <span className={styles.contactLabel}>WhatsApp</span>
-                    <span className={styles.contactValue}>{phone}</span>
-                    <span className={styles.contactHint}>Trimiteți un mesaj</span>
-                  </div>
-                </a>
-
-                <div className={styles.contactCard}>
-                  <div className={styles.contactIcon}>📍</div>
-                  <div>
-                    <span className={styles.contactLabel}>Adresă</span>
-                    <span className={styles.contactValue}>{address}</span>
-                    <span className={styles.contactHint}>Județul Neamț, România</span>
-                  </div>
+            {/* 1. Cards */}
+            <div className={styles.contactCards}>
+              <a href={`tel:${phone}`} className={styles.contactCard}>
+                <div className={styles.contactIcon}>
+                  <PhoneIcon />
                 </div>
-
-                <div className={styles.contactCard}>
-                  <div className={styles.contactIcon}>⏰</div>
-                  <div>
-                    <span className={styles.contactLabel}>Program</span>
-                    <span className={styles.contactValue}>Lun–Sâm: 7:00–18:00</span>
-                    <span className={styles.contactHint}>Duminică: închis</span>
-                  </div>
+                <div className={styles.contactBody}>
+                  <span className={styles.contactLabel}>Telefon</span>
+                  <span className={styles.contactValue}>{phoneDisplay}</span>
+                  <span className={styles.contactHint}>Apelați direct</span>
                 </div>
-              </div>
+              </a>
 
-              {/* Google Maps embed */}
-              <div className={styles.mapWrapper}>
-                <iframe
-                  title="Locație MASERCOM pe Google Maps"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43538.!2d26.3672!3d47.2003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4734cf9d4a20c249%3A0x30fc8a8d8a3e8f1!2sT%C3%A2rgu%20Neam%C8%9B!5e0!3m2!1sro!2sro!4v1700000000000!5m2!1sro!2sro"
-                  width="100%"
-                  height="300"
-                  style={{ border: 0, borderRadius: '12px' }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
+              <a
+                href={`https://wa.me/${whatsapp}?text=Bună ziua, sunt interesat de serviciile MASERCOM.`}
+                className={styles.contactCard}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className={styles.contactIcon}>
+                  <ChatIcon />
+                </div>
+                <div className={styles.contactBody}>
+                  <span className={styles.contactLabel}>WhatsApp</span>
+                  <span className={styles.contactValue}>{phoneDisplay}</span>
+                  <span className={styles.contactHint}>Trimiteți un mesaj</span>
+                </div>
+              </a>
 
-              <div className={styles.zoneInfo}>
-                <h3>Zona de Acoperire</h3>
-                <p>
-                  Acoperim <strong>Târgu Neamț</strong> și o rază de aproximativ{' '}
-                  <strong>30 km</strong> — inclusiv Piatra Neamț, Roman, Bicaz,
-                  Roznov, Săvinești, Negrești, Bălțătești și localitățile din jur.
-                </p>
-                <p style={{ marginTop: '0.5rem' }}>
-                  Pentru distanțe mai mari, contactați-ne — analizăm fiecare
-                  solicitare individual.
-                </p>
+              <a
+                href={mapsUrl}
+                className={styles.contactCard}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className={styles.contactIcon}>
+                  <PinIcon />
+                </div>
+                <div className={styles.contactBody}>
+                  <span className={styles.contactLabel}>Adresă</span>
+                  <span className={styles.contactValue}>{address}</span>
+                  <span className={styles.contactHint}>Deschide în Maps</span>
+                </div>
+              </a>
+
+              <div className={styles.contactCard}>
+                <div className={styles.contactIcon}>
+                  <ClockIcon />
+                </div>
+                <div className={styles.contactBody}>
+                  <span className={styles.contactLabel}>Program</span>
+                  <span className={styles.contactValue}>Lun–Sâm: 7:00–18:00</span>
+                  <span className={styles.contactHint}>Duminică: închis</span>
+                </div>
               </div>
             </div>
 
-            {/* Right: form */}
+            {/* 2. Form */}
             <div className={styles.formCol}>
-              <ContactForm title="Trimite un mesaj" />
+              <ContactForm title="Solicită o ofertă gratuită" />
+            </div>
 
-              <div className={styles.quickContact}>
-                <p>Preferi să vorbești direct?</p>
-                <a href={`tel:${phone}`} className="btn btn--primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  📞 Sună la {phone}
-                </a>
-              </div>
+            {/* 3. Map */}
+            <div className={styles.mapWrapper}>
+              <iframe
+                title="Locație MASERCOM pe Google Maps"
+                src="https://maps.google.com/maps?q=Strada+Independentei+29,+Targu+Neamt,+Romania&hl=ro&z=15&output=embed"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
       </section>
+
+      <WhatsAppButton />
     </>
   );
 }

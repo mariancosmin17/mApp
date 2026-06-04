@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
-import Header from '@/components/layout/Header/Header';
+import Navbar from '@/components/layout/Navbar/Navbar';
 import Footer from '@/components/layout/Footer/Footer';
-import WhatsAppButton from '@/components/layout/WhatsAppButton/WhatsAppButton';
 import CookieBanner from '@/components/ui/CookieBanner/CookieBanner';
 import JsonLd from '@/components/seo/JsonLd';
 import './globals.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://masercom.ro';
 const phone = process.env.NEXT_PUBLIC_PHONE ?? '0756523427';
-const address = process.env.NEXT_PUBLIC_ADDRESS ?? 'Târgu Neamț, Neamț 615200';
+const address = process.env.NEXT_PUBLIC_ADDRESS ?? 'Strada Independenței Nr. 29, Târgu Neamț, Neamț 615200';
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -106,10 +105,9 @@ export default function RootLayout({
     <html lang="ro" className={GeistSans.variable}>
       <body>
         <JsonLd data={localBusinessSchema} />
-        <Header />
+        <Navbar />
         {children}
         <Footer />
-        <WhatsAppButton />
         <CookieBanner />
       </body>
     </html>

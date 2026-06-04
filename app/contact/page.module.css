@@ -1,34 +1,4 @@
-.hero {
-  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-gray-dark) 100%);
-  padding: var(--spacing-3xl) 0;
-  border-bottom: 4px solid var(--color-primary);
-}
-
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: var(--spacing-md);
-}
-
-.breadcrumb a {
-  color: rgba(255, 255, 255, 0.5);
-  transition: color var(--transition);
-}
-
-.breadcrumb a:hover { color: var(--color-primary-light); }
-
-.hero h1 { color: var(--color-white); margin-bottom: var(--spacing-sm); }
-
-.heroSubtitle {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.75);
-  max-width: 500px;
-}
-
-/* Main grid */
+/* Main grid — desktop: cards+map stânga, form dreapta */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -36,19 +6,10 @@
   align-items: start;
 }
 
-/* Info column */
-.infoCol {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
-}
-
-.infoTitle {
-  font-size: 1.5rem;
-}
-
-/* Contact cards */
+/* Contact cards — 2×2 pe desktop */
 .contactCards {
+  grid-column: 1;
+  grid-row: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-sm);
@@ -57,40 +18,46 @@
 .contactCard {
   display: flex;
   align-items: flex-start;
-  gap: var(--spacing-sm);
-  background-color: var(--color-bg);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: var(--radius-md);
-  padding: 1rem;
+  gap: 0.875rem;
+  background-color: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: var(--radius-lg);
+  padding: 1.125rem;
   text-decoration: none;
   color: inherit;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 
 a.contactCard:hover {
   border-color: var(--color-primary);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .contactIcon {
-  font-size: 1.5rem;
   flex-shrink: 0;
-  margin-top: 2px;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background-color: rgba(0, 91, 179, 0.1);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
 }
 
-.whatsappIcon {
-  filter: hue-rotate(100deg);
-}
-
-.contactCard > div {
+.contactBody {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
+  gap: 0.15rem;
+  min-width: 0;
 }
 
 .contactLabel {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -100,8 +67,10 @@ a.contactCard:hover {
 .contactValue {
   font-family: var(--font-heading);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-dark);
+  line-height: 1.3;
+  word-break: break-word;
 }
 
 .contactHint {
@@ -109,36 +78,10 @@ a.contactCard:hover {
   color: var(--color-gray-light);
 }
 
-/* Map */
-.mapWrapper {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-/* Zone info */
-.zoneInfo {
-  background-color: rgba(230, 81, 0, 0.05);
-  border: 1px solid rgba(230, 81, 0, 0.15);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md);
-}
-
-.zoneInfo h3 {
-  font-size: 1rem;
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-}
-
-.zoneInfo p {
-  font-size: 0.875rem;
-  color: var(--color-gray);
-  line-height: 1.6;
-}
-
 /* Form column */
 .formCol {
+  grid-column: 2;
+  grid-row: 1 / 3;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
@@ -146,20 +89,29 @@ a.contactCard:hover {
   top: 90px;
 }
 
-.quickContact {
-  text-align: center;
+/* Map */
+.mapWrapper {
+  grid-column: 1;
+  grid-row: 2;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.quickContact p {
-  font-size: 0.875rem;
-  color: var(--color-gray);
-  margin-bottom: 0.75rem;
-}
+/* ===== RESPONSIVE ===== */
 
-/* Responsive */
+/* Tabletă/mobil: o coloană, ordinea HTML (cards → form → map) */
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .contactCards,
+  .formCol,
+  .mapWrapper {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .formCol {
@@ -167,8 +119,17 @@ a.contactCard:hover {
   }
 }
 
-@media (max-width: 600px) {
+/* Mobil: carduri pe o singură coloană */
+@media (max-width: 640px) {
   .contactCards {
     grid-template-columns: 1fr;
+  }
+
+  .contactCard {
+    padding: 1rem;
+  }
+
+  .contactValue {
+    font-size: 0.875rem;
   }
 }

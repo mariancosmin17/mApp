@@ -1,0 +1,32 @@
+.fadeVignette {
+  height: 22vh;
+  background: linear-gradient(
+    to top,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.96) 10%,
+    rgba(255, 255, 255, 0.86) 22%,
+    rgba(255, 255, 255, 0.68) 38%,
+    rgba(255, 255, 255, 0.44) 54%,
+    rgba(255, 255, 255, 0.22) 70%,
+    rgba(255, 255, 255, 0.07) 84%,
+    rgba(255, 255, 255, 0.01) 94%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .fadeVignette {
+    height: 14vh;
+    background: linear-gradient(
+      to top,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.93) 14%,
+      rgba(255, 255, 255, 0.78) 30%,
+      rgba(255, 255, 255, 0.56) 50%,
+      rgba(255, 255, 255, 0.30) 68%,
+      rgba(255, 255, 255, 0.10) 84%,
+      rgba(255, 255, 255, 0.02) 94%,
+      transparent 100%
+    );
+  }
+}

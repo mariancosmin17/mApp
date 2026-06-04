@@ -113,29 +113,21 @@ const thirdColumn = testimonials.slice(6, 9);
 
 const Testimonials = () => {
   return (
-    <section className="bg-slate-50 py-20 relative overflow-hidden">
+    <section className="bg-slate-50 pt-44 pb-20 relative overflow-hidden">
       <div className="container mx-auto px-6 z-10 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-12"
+          className="section-header"
+          style={{ marginBottom: '2rem', marginTop: '3rem' }}
         >
-          <div className="flex justify-center">
-            <div className="border border-blue-200 text-blue-600 text-sm font-medium py-1 px-4 rounded-full bg-blue-50">
-              Testimoniale
-            </div>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mt-5 text-slate-800 text-center">
-            Ce spun clienții
-          </h2>
-          <p className="text-center mt-4 text-slate-500">
-            Sute de clienți mulțumiți din Târgu Neamț și județul Neamț.
-          </p>
+          <h2>Ce spun clienții</h2>
+          <p>Sute de clienți mulțumiți din Târgu Neamț și județul Neamț.</p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-6 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] max-h-[740px] overflow-hidden">
+        <div className="flex justify-center gap-6 mt-2 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[720px] overflow-hidden">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
