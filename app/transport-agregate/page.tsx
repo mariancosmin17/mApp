@@ -5,7 +5,7 @@ import FaqSection from '@/components/ui/FaqSection/FaqSection';
 import JsonLd from '@/components/seo/JsonLd';
 import styles from './page.module.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://masercom.ro';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://masercom.com';
 
 const schemas = [
   {

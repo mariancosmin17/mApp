@@ -30,7 +30,7 @@ export default function PoliticaConfidentialitatiPage() {
             <h2>1. Introducere</h2>
             <p>
               MASERCOM ("noi", "compania") respectă confidențialitatea datelor
-              personale ale utilizatorilor site-ului masercom.ro. Această politică
+              personale ale utilizatorilor site-ului masercom.com. Această politică
               explică ce date colectăm, cum le folosim și drepturile dumneavoastră
               conform Regulamentului (UE) 2016/679 (GDPR).
             </p>

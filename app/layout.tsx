@@ -6,7 +6,7 @@ import CookieBanner from '@/components/ui/CookieBanner/CookieBanner';
 import JsonLd from '@/components/seo/JsonLd';
 import './globals.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://masercom.ro';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://masercom.com';
 const phone = process.env.NEXT_PUBLIC_PHONE ?? '0756523427';
 const address = process.env.NEXT_PUBLIC_ADDRESS ?? 'Strada Independenței Nr. 29, Târgu Neamț, Neamț 615200';
 
