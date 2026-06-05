@@ -112,6 +112,8 @@ export default function ExcavatiiterasamentePage() {
     <>
       <JsonLd data={schemas} />
 
+      <h1 className="sr-only">Excavații și Terasamente Târgu Neamț — Săpături, Nivelări, Demolări | MASERCOM</h1>
+
       <section className={`section ${styles.servicesSection}`}>
         <div className="container">
           <div className="section-header">
@@ -135,7 +137,7 @@ export default function ExcavatiiterasamentePage() {
                 <div className={styles.cardBgWrapper}>
                   <Image
                     src={s.image}
-                    alt=""
+                    alt={`${s.title} — MASERCOM Târgu Neamț`}
                     fill
                     style={{ objectFit: 'cover', objectPosition: 'center' }}
                     sizes="(min-width: 1024px) 33vw, (min-width: 600px) 50vw, 100vw"

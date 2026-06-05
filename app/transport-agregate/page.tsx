@@ -107,6 +107,8 @@ export default function TransportAgregatePage() {
     <>
       <JsonLd data={schemas} />
 
+      <h1 className="sr-only">Transport Agregate Târgu Neamț — Nisip, Balast, Piatră Spartă | MASERCOM</h1>
+
       {/* Products */}
       <section className={`section ${styles.productsSection}`}>
         <div className="container">
@@ -131,7 +133,7 @@ export default function TransportAgregatePage() {
                 <div className={styles.cardBgWrapper}>
                   <Image
                     src={p.image}
-                    alt=""
+                    alt={`${p.name} pentru construcții — MASERCOM Târgu Neamț`}
                     fill
                     style={{ objectFit: 'cover', objectPosition: 'center' }}
                     sizes="(min-width: 1024px) 33vw, (min-width: 600px) 50vw, 100vw"

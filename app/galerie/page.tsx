@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   description:
     'Galerie foto cu utilajele și lucrările MASERCOM din Târgu Neamț: transport agregate, nacelă, buldoexcavator, excavații și terasamente în județul Neamț.',
   alternates: { canonical: '/galerie' },
+  openGraph: {
+    title: 'Galerie Foto Utilaje și Lucrări — MASERCOM Târgu Neamț',
+    description: 'Galerie foto cu utilajele și lucrările MASERCOM: nacelă, buldoexcavator, transport agregate, excavații în județul Neamț.',
+    images: [{ url: '/background.png', width: 1200, height: 630, alt: 'MASERCOM Târgu Neamț — Galerie Utilaje' }],
+  },
 };
 
 // Placeholder — înlocuiți src cu calea reală când adăugați poze în public/images/
@@ -26,6 +31,7 @@ export default function GaleriePage() {
   return (
     <section className="section">
       <div className="container">
+        <h1 className="sr-only">Galerie Foto Utilaje și Lucrări — MASERCOM Târgu Neamț</h1>
         <div className={styles.notice}>
           <span className={styles.noticeIcon} aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

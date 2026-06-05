@@ -17,7 +17,7 @@ export default function ServiceCard({ image, title, description, href, number }:
       <div className={styles.bgWrapper}>
         <Image
           src={image}
-          alt=""
+          alt={title}
           fill
           style={{ objectFit: 'cover', objectPosition: 'center center' }}
           sizes="(min-width: 1280px) 1280px, 100vw"

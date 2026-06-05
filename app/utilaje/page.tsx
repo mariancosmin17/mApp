@@ -118,6 +118,8 @@ export default function UtilajePage() {
     <>
       <JsonLd data={schemas} />
 
+      <h1 className="sr-only">Închiriere Utilaje Târgu Neamț — Nacelă, Buldoexcavator, Miniexcavator | MASERCOM</h1>
+
       {/* Utilaje cards */}
       <section className={`section ${styles.utilajeSection}`}>
         <div className="container">
@@ -146,7 +148,7 @@ export default function UtilajePage() {
                   />
                 </div>
                 <div className={styles.utilajContent}>
-                  <h2 className={styles.utilajName}>{u.name}</h2>
+                  <h3 className={styles.utilajName}>{u.name}</h3>
                   <p className={styles.utilajDesc}>{u.description}</p>
                   <div className={styles.utilajUses}>
                     <strong>Utilizări tipice:</strong>

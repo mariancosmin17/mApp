@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   description:
     'Contactează MASERCOM Târgu Neamț pentru transport agregate, închiriere utilaje sau lucrări de excavații. Tel: 0756523427. Răspundem rapid!',
   alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact MASERCOM Târgu Neamț',
+    description: 'Contactați-ne pentru transport agregate, închiriere utilaje sau lucrări de excavații în județul Neamț.',
+    images: [{ url: '/background.png', width: 1200, height: 630, alt: 'MASERCOM Târgu Neamț' }],
+  },
 };
 
 const phone = process.env.NEXT_PUBLIC_PHONE ?? '0756523427';
@@ -48,6 +53,7 @@ export default function ContactPage() {
     <>
       <section className="section">
         <div className="container">
+          <h1 className="sr-only">Contact MASERCOM — Transport Agregate și Închiriere Utilaje Târgu Neamț</h1>
           <div className="section-header">
             <span className="label">Contactați-ne</span>
             <h2>Hai să Lucrăm Împreună</h2>
