@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import HeroSection from '@/components/ui/HeroSection/HeroSection';
 import ServiceCard from '@/components/ui/ServiceCard/ServiceCard';
 import { Testimonials } from '@/components/ui/testimonials-columns-1';
 import Reveal from '@/components/ui/Reveal/Reveal';
+import ShimmerText from '@/components/ui/ShimmerText/ShimmerText';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -96,6 +98,13 @@ export default function HomePage() {
                 <span className={styles.statLbl}>{s.label}</span>
               </Reveal>
             ))}
+          </div>
+          <div className={styles.statsFooter}>
+            <Link href="/galerie" className={styles.galerieLink}>
+              <ShimmerText>
+                Vezi lucrări reale realizate <span className={styles.arrow}>→</span>
+              </ShimmerText>
+            </Link>
           </div>
         </div>
       </section>

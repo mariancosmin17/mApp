@@ -129,7 +129,7 @@ export default function TransportAgregatePage() {
 
           <div className={styles.productsGrid}>
             {products.map((p, i) => (
-              <div key={p.name} className={styles.productCard}>
+              <Link key={p.name} href="/contact" className={styles.productCard} style={{ display: 'block', textDecoration: 'none' }}>
                 <div className={styles.cardBgWrapper}>
                   <Image
                     src={p.image}
@@ -143,7 +143,7 @@ export default function TransportAgregatePage() {
                 <span className={styles.productNum}>{String(i + 1).padStart(2, '0')}</span>
                 <h3 className={styles.productName}>{p.name}</h3>
                 <p className={styles.productDesc}>{p.desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

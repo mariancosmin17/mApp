@@ -133,7 +133,7 @@ export default function ExcavatiiterasamentePage() {
 
           <div className={styles.servicesGrid}>
             {services.map((s, i) => (
-              <div key={s.title} className={styles.serviceCard}>
+              <Link key={s.title} href="/contact" className={styles.serviceCard} style={{ display: 'block', textDecoration: 'none' }}>
                 <div className={styles.cardBgWrapper}>
                   <Image
                     src={s.image}
@@ -147,7 +147,7 @@ export default function ExcavatiiterasamentePage() {
                 <span className={styles.serviceNum}>{String(i + 1).padStart(2, '0')}</span>
                 <h3 className={styles.serviceTitle}>{s.title}</h3>
                 <p className={styles.serviceDesc}>{s.desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

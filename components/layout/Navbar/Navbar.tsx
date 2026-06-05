@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
-import { Menu, Truck, Forklift, Shovel, ChevronDown } from 'lucide-react';
+import { Menu, Truck, Forklift, Shovel, ChevronDown, Phone } from 'lucide-react';
 
 import {
   Accordion,
@@ -150,16 +150,16 @@ export default function Navbar() {
                       </button>
 
                       {dropdownOpen && (
-                        <div className="absolute left-0 top-full mt-2 z-50 rounded-lg border border-white/10 bg-[#0c1220] shadow-xl shadow-black/40">
-                          <ul className="w-[24rem] px-5 pt-5 pb-6">
+                        <div className="absolute left-0 top-full mt-2 z-50 w-[24rem] rounded-lg border border-white/10 bg-[#0c1220] p-2 shadow-xl shadow-black/40">
+                          <ul>
                             {item.items.map((sub) => (
                               <li key={sub.title}>
                                 <Link
                                   href={sub.url}
                                   onClick={() => setDropdownOpen(false)}
-                                  className="flex select-none gap-2 rounded-md p-4 leading-none no-underline outline-none transition-colors hover:bg-white/10"
+                                  className="flex select-none items-start gap-3 rounded-md px-4 py-3 leading-none no-underline outline-none transition-colors hover:bg-white/10"
                                 >
-                                  <span className="mt-0.5 text-[#005BB3]">{sub.icon}</span>
+                                  <span className="mt-0.5 shrink-0 text-[#005BB3]">{sub.icon}</span>
                                   <div>
                                     <div className="text-sm font-semibold text-white">
                                       {sub.title}
@@ -191,7 +191,10 @@ export default function Navbar() {
               })}
             </div>
           </div>
-          <PhoneDisperse phone={phone} className="text-lg text-white" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Phone style={{ width: '1rem', height: '1rem', color: 'rgba(255,255,255,0.7)', flexShrink: 0 }} />
+            <PhoneDisperse phone={phone} className="text-lg text-white" />
+          </div>
         </nav>
 
         {/* Mobile */}
@@ -202,37 +205,47 @@ export default function Navbar() {
                 MASER<span className="text-[#005BB3]">COM</span>
               </span>
             </Link>
-            <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-              <SheetTrigger asChild>
-                <button
-                  className="inline-flex size-10 items-center justify-center rounded-md border border-white/15 text-white transition-colors hover:bg-white/10"
-                  aria-label="Deschide meniu"
-                >
-                  <Menu className="size-5" />
-                </button>
-              </SheetTrigger>
-              <SheetContent className="overflow-y-auto border-white/10 bg-[#0c1220] text-white">
-                <SheetHeader>
-                  <SheetTitle>
-                    <Link
-                      href="/"
-                      onClick={() => setMobileOpen(false)}
-                      className="text-lg font-extrabold tracking-tight text-white"
-                    >
-                      MASER<span className="text-[#005BB3]">COM</span>
-                    </Link>
-                  </SheetTitle>
-                </SheetHeader>
-                <div className="my-6 flex flex-col gap-6">
-                  <Accordion type="single" collapsible className="flex w-full flex-col gap-6">
-                    {menu.map(renderMobileItem)}
-                  </Accordion>
-                  <div className="border-t border-white/10 pt-6">
-                    <PhoneDisperse phone={phone} className="text-xl text-white" />
+            <div className="flex items-center gap-2">
+              <a
+                href={`tel:${phone}`}
+                className="flex items-center gap-1.5 px-2 py-2 text-sm font-semibold text-white/85 transition-colors hover:text-white"
+                aria-label={`Sună la ${phone}`}
+              >
+                <Phone className="size-3.5" />
+                <span>{phone}</span>
+              </a>
+              <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+                <SheetTrigger asChild>
+                  <button
+                    className="inline-flex size-10 items-center justify-center rounded-md border border-white/15 text-white transition-colors hover:bg-white/10"
+                    aria-label="Deschide meniu"
+                  >
+                    <Menu className="size-5" />
+                  </button>
+                </SheetTrigger>
+                <SheetContent className="overflow-y-auto border-white/10 bg-[#0c1220] text-white">
+                  <SheetHeader>
+                    <SheetTitle>
+                      <Link
+                        href="/"
+                        onClick={() => setMobileOpen(false)}
+                        className="text-lg font-extrabold tracking-tight text-white"
+                      >
+                        MASER<span className="text-[#005BB3]">COM</span>
+                      </Link>
+                    </SheetTitle>
+                  </SheetHeader>
+                  <div className="my-6 flex flex-col gap-6">
+                    <Accordion type="single" collapsible className="flex w-full flex-col gap-6">
+                      {menu.map(renderMobileItem)}
+                    </Accordion>
+                    <div className="border-t border-white/10 pt-6">
+                      <PhoneDisperse phone={phone} className="text-xl text-white" />
+                    </div>
                   </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>
