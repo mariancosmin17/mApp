@@ -14,7 +14,15 @@
   );
 }
 
+.heroTitleWrapper {
+  --hero-title-size: clamp(2.7rem, 9vw, 7.65rem);
+}
+
 @media (max-width: 768px) {
+  .heroTitleWrapper {
+    --hero-title-size: clamp(2.97rem, 9vw, 7.65rem);
+  }
+
   .fadeVignette {
     height: 14vh;
     background: linear-gradient(

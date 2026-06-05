@@ -66,7 +66,7 @@ function Hero() {
             </p>
 
             {/* MASERCOM — shiny animated */}
-            <AnimatedText text="MASERCOM" className="py-0" />
+            <AnimatedText text="MASERCOM" className={`py-0 ${styles.heroTitleWrapper}`} />
 
             {/* Thin divider */}
             <div className="w-24 h-px bg-white/15 my-5" />

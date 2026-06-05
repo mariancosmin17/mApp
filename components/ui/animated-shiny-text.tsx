@@ -49,7 +49,7 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
         <motion.h1
           className={cn("leading-none font-black", textClassName)}
           style={{
-            fontSize: "clamp(3rem, 10vw, 8.5rem)",
+            fontSize: "var(--hero-title-size, clamp(2.7rem, 9vw, 7.65rem))",
             letterSpacing: "0.05em",
             background: gradientColors,
             backgroundSize: "200% auto",
