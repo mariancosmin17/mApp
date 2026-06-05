@@ -121,7 +121,7 @@ export default function PoliticaConfidentialitatiPage() {
             </ul>
 
             <div className={styles.backLink}>
-              <Link href="/" className="btn btn--primary">
+              <Link href="/" className={`btn ${styles.backLinkBtn}`}>
                 ← Înapoi la pagina principală
               </Link>
             </div>
