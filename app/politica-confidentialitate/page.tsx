@@ -24,7 +24,7 @@ export default function PoliticaConfidentialitatiPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className={`section ${styles.contentSection}`}>
         <div className="container">
           <div className={styles.content}>
             <h2>1. Introducere</h2>
@@ -85,8 +85,8 @@ export default function PoliticaConfidentialitatiPage() {
             <p>
               Pentru exercitarea acestor drepturi, contactați-ne la numărul de
               telefon{' '}
-              <a href={`tel:${process.env.NEXT_PUBLIC_PHONE ?? '0756523427'}`}>
-                {process.env.NEXT_PUBLIC_PHONE ?? '0756523427'}
+              <a href={`tel:${'0756523427'}`}>
+                {'0756523427'}
               </a>
               .
             </p>
@@ -113,11 +113,11 @@ export default function PoliticaConfidentialitatiPage() {
             <ul>
               <li>
                 Telefon:{' '}
-                <a href={`tel:${process.env.NEXT_PUBLIC_PHONE ?? '0756523427'}`}>
-                  {process.env.NEXT_PUBLIC_PHONE ?? '0756523427'}
+                <a href={`tel:${'0756523427'}`}>
+                  {'0756523427'}
                 </a>
               </li>
-              <li>Adresă: {process.env.NEXT_PUBLIC_ADDRESS ?? 'Târgu Neamț, Neamț'}</li>
+              <li>Adresă: Strada Independenței Nr. 29, Târgu Neamț, Neamț 615200</li>
             </ul>
 
             <div className={styles.backLink}>

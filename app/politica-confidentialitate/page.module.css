@@ -1,6 +1,7 @@
 .hero {
-  background: var(--color-dark);
+  background: linear-gradient(160deg, #0c1220 0%, #111e35 100%);
   padding: var(--spacing-2xl) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .breadcrumb {
@@ -8,23 +9,28 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.4);
   margin-bottom: var(--spacing-sm);
 }
 
 .breadcrumb a {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.4);
   transition: color var(--transition);
 }
 
-.breadcrumb a:hover { color: var(--color-primary-light); }
+.breadcrumb a:hover { color: rgba(255, 255, 255, 0.8); }
 
 .hero h1 { color: var(--color-white); margin-bottom: 0.5rem; }
 
 .updated {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.35);
   margin: 0;
+}
+
+/* Content section */
+.contentSection {
+  background-color: #0c1220;
 }
 
 .content {
@@ -34,11 +40,11 @@
 
 .content h2 {
   font-size: 1.25rem;
-  color: var(--color-dark);
+  color: var(--color-white);
   margin-top: var(--spacing-xl);
   margin-bottom: var(--spacing-sm);
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--color-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .content h2:first-child {
@@ -47,6 +53,7 @@
 
 .content p {
   font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
   line-height: 1.75;
   margin-bottom: var(--spacing-sm);
 }
@@ -59,32 +66,37 @@
 
 .content ul li {
   font-size: 0.95rem;
-  color: var(--color-gray);
+  color: rgba(255, 255, 255, 0.6);
   line-height: 1.7;
   margin-bottom: 0.25rem;
 }
 
 .content a {
-  color: var(--color-primary);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.content a:hover {
+  color: var(--color-white);
 }
 
 .backLink {
   margin-top: var(--spacing-2xl);
   padding-top: var(--spacing-xl);
-  border-top: 1px solid var(--color-bg-section, #efefef);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .backLinkBtn {
-  background-color: var(--color-white);
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+  background-color: transparent;
+  color: var(--color-white);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   box-shadow: none;
 }
 
 .backLinkBtn:hover {
-  background-color: var(--color-primary);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: none;
   color: var(--color-white);
-  box-shadow: 0 4px 16px rgba(0, 91, 179, 0.35);
 }
