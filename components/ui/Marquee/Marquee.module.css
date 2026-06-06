@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--marquee-gap, 1.25rem);
+  animation: marqueeScroll var(--marquee-duration, 40s) linear infinite;
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+
+.hoverPause:hover .track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100% - var(--marquee-gap, 1.25rem))); }
+}

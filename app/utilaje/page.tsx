@@ -51,7 +51,7 @@ const utilaje = [
   {
     id: 'nacela',
     name: 'Nacelă Articulată',
-    image: '/u1.jpg',
+    image: '/u1_new.jpeg',
     description:
       'Nacelă autopropulsată pentru lucrări la înălțime — reparații acoperișuri, vopsit fațade, tăieri arbori, montaj panouri, instalații electrice. Sigură, eficientă, cu rază mare de acțiune.',
     uses: ['Reparații și vopsit fațade', 'Lucrări la acoperișuri', 'Montaj panouri și reclame', 'Tăieri și corecturi arbori', 'Instalații electrice la înălțime'],
@@ -60,7 +60,7 @@ const utilaje = [
   {
     id: 'basculanta-macara',
     name: 'Basculantă cu Macară',
-    image: '/u2.webp',
+    image: '/u2_new.jpg',
     description:
       'Combinație unică: basculantă pentru transport agregate și macară pentru descărcare în locuri greu accesibile. Ideal pentru șantiere cu spațiu limitat sau materiale grele.',
     uses: ['Transport și descărcare agregate', 'Șantiere cu acces dificil', 'Transport materiale grele', 'Descărcare precisă în spații înguste'],
@@ -69,7 +69,7 @@ const utilaje = [
   {
     id: 'buldoexcavator',
     name: 'Buldoexcavator',
-    image: '/u3.jpg',
+    image: '/u3_new.jpg',
     description:
       'Buldoexcavator polivalent pentru săpături, demolări ușoare, nivelare teren și încărcare materiale. Eficient pe orice tip de teren.',
     uses: ['Săpături fundații', 'Nivelare și amenajare teren', 'Demolări ușoare', 'Încărcare și transport pământ', 'Lucrări de drenaj'],
@@ -78,7 +78,7 @@ const utilaje = [
   {
     id: 'miniexcavator',
     name: 'Miniexcavator',
-    image: '/u4.webp',
+    image: '/u4_new.webp',
     description:
       'Miniexcavator compact — perfect pentru spații înguste unde utilajele mari nu pot accesa. Ideal pentru grădini, curți, fundații mici și lucrări urban.',
     uses: ['Săpături în spații înguste', 'Fundații case mici', 'Lucrări în grădini și curți', 'Instalații rețele (apă, gaz, curent)', 'Demolări parțiale'],
@@ -143,8 +143,9 @@ export default function UtilajePage() {
                     src={u.image}
                     alt={u.name}
                     fill
+                    quality={90}
                     style={{ objectFit: 'cover', objectPosition: 'center' }}
-                    sizes="300px"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                   />
                 </div>
                 <div className={styles.utilajContent}>
