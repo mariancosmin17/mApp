@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import Marquee from '@/components/ui/Marquee/Marquee';
+import GalleryMarquee from '@/components/ui/GalleryMarquee/GalleryMarquee';
+import ShimmerText from '@/components/ui/ShimmerText/ShimmerText';
 import JsonLd from '@/components/seo/JsonLd';
 import styles from './page.module.css';
 
@@ -76,24 +77,6 @@ const galleryItems = [
   },
 ];
 
-function GalleryCard({ src, alt, desc }: { src: string; alt: string; desc: string }) {
-  return (
-    <div className={styles.card}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        quality={90}
-        style={{ objectFit: 'cover', objectPosition: 'center' }}
-        sizes="420px"
-      />
-      <div className={styles.cardOverlay}>
-        <p className={styles.cardDesc}>{desc}</p>
-      </div>
-    </div>
-  );
-}
-
 export default function GaleriePage() {
   return (
     <>
@@ -101,50 +84,42 @@ export default function GaleriePage() {
 
       <h1 className="sr-only">Galerie Foto Lucrări Executate — MASERCOM Târgu Neamț</h1>
 
-      {/* Header */}
+      {/* Header — fundal întunecat ca versiunea deployată */}
       <section className={styles.headerSection}>
         <div className="container">
-          <span className={styles.label}>Lucrări reale</span>
+          <span className={styles.label}>Lucrări executate</span>
           <h2 className={styles.title}>Galerie</h2>
           <p className={styles.subtitle}>Descoperă o parte din lucrările executate de noi</p>
+          <div className={styles.ctaWrapper}>
+            <Link href="/contact" className={styles.ctaLink}>
+              <ShimmerText>
+                Solicită ofertă <span className={styles.arrow}>→</span>
+              </ShimmerText>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Marquee gallery */}
       <section className={styles.gallerySection}>
-        <div className={styles.fadeLeft} aria-hidden="true" />
-        <div className={styles.fadeRight} aria-hidden="true" />
-
-        <div className={styles.row}>
-          <Marquee duration={38} gap="1.25rem">
-            {galleryItems.map((item) => (
-              <GalleryCard key={item.src} {...item} />
-            ))}
-          </Marquee>
-        </div>
-
-        <div className={styles.row} style={{ marginTop: '1.25rem' }}>
-          <Marquee duration={50} gap="1.25rem" reverse>
-            {galleryItems.map((item) => (
-              <GalleryCard key={item.src + '-r'} {...item} />
-            ))}
-          </Marquee>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className={styles.ctaSection}>
-        <div className="container">
-          <div className={styles.ctaInner}>
-            <div>
-              <h3 className={styles.ctaTitle}>Vrei să lucrăm împreună?</h3>
-              <p className={styles.ctaText}>Contactează-ne pentru o ofertă personalizată.</p>
+        <GalleryMarquee>
+          {galleryItems.map((item) => (
+            <div key={item.src} className={styles.card}>
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                quality={90}
+                className={styles.cardImg}
+                sizes="420px"
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
+              />
+              <div className={styles.cardOverlay}>
+                <p className={styles.cardDesc}>{item.desc}</p>
+              </div>
             </div>
-            <Link href="/contact" className="btn btn--primary">
-              Solicită ofertă
-            </Link>
-          </div>
-        </div>
+          ))}
+        </GalleryMarquee>
       </section>
     </>
   );

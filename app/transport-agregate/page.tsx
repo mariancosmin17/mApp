@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import FaqSection from '@/components/ui/FaqSection/FaqSection';
 import JsonLd from '@/components/seo/JsonLd';
+import ShimmerText from '@/components/ui/ShimmerText/ShimmerText';
 import styles from './page.module.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://masercom.com';
@@ -109,24 +110,25 @@ export default function TransportAgregatePage() {
 
       <h1 className="sr-only">Transport Agregate Târgu Neamț — Nisip, Balast, Piatră Spartă | MASERCOM</h1>
 
+      {/* Header */}
+      <section className={styles.pageHeader}>
+        <div className="container">
+          <span className={styles.headerLabel}>Ce livrăm</span>
+          <h2 className={styles.headerTitle}>Tipuri de Agregate</h2>
+          <p className={styles.headerSubtitle}>
+            Toate agregatele sunt de calitate, livrate cu basculanta direct la adresa indicată.
+          </p>
+          <p className={styles.headerCtaText}>
+            <Link href="/contact" className={styles.headerCtaLink}>
+              <ShimmerText>Solicită ofertă <span className={styles.arrow}>→</span></ShimmerText>
+            </Link>
+          </p>
+        </div>
+      </section>
+
       {/* Products */}
       <section className={`section ${styles.productsSection}`}>
         <div className="container">
-          <div className="section-header">
-            <span className="label">Ce livrăm</span>
-            <h2>Tipuri de Agregate Disponibile</h2>
-            <p>
-              Toate agregatele sunt de calitate, livrate cu basculanta direct la
-              adresa indicată.
-            </p>
-            <p className={styles.ctaInline}>
-              Ai nevoie de o ofertă personalizată?{' '}
-              <Link href="/contact" className={styles.ctaInlineLink}>
-                Solicită ofertă →
-              </Link>
-            </p>
-          </div>
-
           <div className={styles.productsGrid}>
             {products.map((p, i) => (
               <Link key={p.name} href="/contact" className={styles.productCard} style={{ display: 'block', textDecoration: 'none' }}>
@@ -151,7 +153,7 @@ export default function TransportAgregatePage() {
 
 
       <div className={styles.faqWrapper}>
-        <FaqSection items={faqs} title="Întrebări despre Transport Agregate" />
+        <FaqSection items={faqs} title="Întrebări despre Transport Agregate" dark />
       </div>
     </>
   );

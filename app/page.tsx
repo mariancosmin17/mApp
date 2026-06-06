@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import HeroSection from '@/components/ui/HeroSection/HeroSection';
 import ServiceCard from '@/components/ui/ServiceCard/ServiceCard';
 import { Testimonials } from '@/components/ui/testimonials-columns-1';
 import Reveal from '@/components/ui/Reveal/Reveal';
 import ShimmerText from '@/components/ui/ShimmerText/ShimmerText';
+import GalleryMarquee from '@/components/ui/GalleryMarquee/GalleryMarquee';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -53,6 +55,18 @@ const services = [
   },
 ];
 
+const galleryItems = [
+  { src: '/g1.jpeg', alt: 'Lucrare la judecătoria Târgu Neamț cu Nacelă', desc: 'Lucrare la judecătoria Târgu Neamț cu Nacelă' },
+  { src: '/g2.jpeg', alt: 'Demolare la un bloc cu Miniexcavator', desc: 'Demolare la un bloc cu Miniexcavator' },
+  { src: '/g3.jpeg', alt: 'Nivelare teren cu Buldoexcavator', desc: 'Nivelare teren cu Buldoexcavator' },
+  { src: '/g4.jpeg', alt: 'Transport pavele', desc: 'Transport pavele' },
+  { src: '/g5.jpeg', alt: 'Săpare canal cu Buldoexcavator', desc: 'Săpare canal cu Buldoexcavator' },
+  { src: '/g6.jpeg', alt: 'Încărcare pavele cu macaraua', desc: 'Încărcare pavele cu macaraua' },
+  { src: '/g7.jpeg', alt: 'Lucrare cu Nacelă', desc: 'Lucrare cu Nacelă' },
+  { src: '/g8.jpeg', alt: 'Nivelare și curățare cu Buldoexcavator', desc: 'Nivelare și curățare cu Buldoexcavator' },
+  { src: '/g9.jpeg', alt: 'Transport la judecătoria Târgu Neamț cu basculantă', desc: 'Transport la judecătoria Târgu Neamț cu basculantă' },
+];
+
 const stats = [
   { number: '10+', label: 'Ani de experiență' },
   { number: '30km', label: 'Rază de acoperire' },
@@ -66,7 +80,7 @@ export default function HomePage() {
       <HeroSection />
 
       {/* Servicii — editorial list */}
-      <section className="section" style={{ paddingTop: 'var(--spacing-xl)' }}>
+      <section className={`section ${styles.servicesSection}`} style={{ paddingTop: 'var(--spacing-xl)', paddingBottom: 'var(--spacing-xl)' }}>
         <div className="container">
           <Reveal>
             <div className="section-header">
@@ -81,7 +95,7 @@ export default function HomePage() {
           <div className={styles.servicesList}>
             {services.map((s, i) => (
               <Reveal key={s.title} delay={i * 0.06}>
-                <ServiceCard {...s} number={i + 1} />
+                <ServiceCard {...s} number={i + 1} dark />
               </Reveal>
             ))}
           </div>
@@ -100,16 +114,42 @@ export default function HomePage() {
             ))}
           </div>
           <div className={styles.statsFooter}>
-            <Link href="/galerie" className={styles.galerieLink}>
+            <Link href="/contact" className={styles.galerieLink}>
               <ShimmerText>
-                Vezi lucrări reale realizate <span className={styles.arrow}>→</span>
+                Solicită ofertă <span className={styles.arrow}>→</span>
               </ShimmerText>
             </Link>
           </div>
         </div>
       </section>
 
-      <Testimonials />
+      {/* Gallery preview */}
+      <section className={styles.galleryPreview}>
+        <div className="container">
+          <div className={styles.galleryInner}>
+            <GalleryMarquee>
+              {galleryItems.map((item) => (
+                <div key={item.src} className={styles.galleryCard}>
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    quality={85}
+                    className={styles.galleryCardImg}
+                    sizes="360px"
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  />
+                  <div className={styles.galleryCardOverlay}>
+                    <p className={styles.galleryCardDesc}>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </GalleryMarquee>
+          </div>
+        </div>
+      </section>
+
+      <Testimonials dark />
     </>
   );
 }

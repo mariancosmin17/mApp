@@ -16,11 +16,13 @@ const services = [
 interface ContactFormProps {
   defaultService?: string;
   title?: string;
+  dark?: boolean;
 }
 
 export default function ContactForm({
   defaultService = '',
   title = 'Solicită o ofertă gratuită',
+  dark = false,
 }: ContactFormProps) {
   const [form, setForm] = useState({
     name: '',
@@ -77,7 +79,7 @@ export default function ContactForm({
 
   if (status === 'success') {
     return (
-      <div className={styles.wrapper}>
+      <div className={`${styles.wrapper} ${dark ? styles.wrapperDark : ''}`}>
         <div className={styles.successMsg}>
           <div className={styles.successIcon}>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -92,7 +94,7 @@ export default function ContactForm({
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${dark ? styles.wrapperDark : ''}`}>
       <span className={styles.formTag}>{title}</span>
       <h2 className={styles.formHeading}>Hai să vorbim.</h2>
       <p className={styles.formSubtitle}>

@@ -1,3 +1,38 @@
+/* ===== DARK PAGE HEADER ===== */
+.pageHeader {
+  background: linear-gradient(160deg, #0c1220 0%, #111e35 100%);
+  padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+.headerLabel {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.headerTitle {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.headerSubtitle {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 560px;
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
 .hero {
   background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-gray-dark) 100%);
   padding: var(--spacing-3xl) 0;
@@ -41,11 +76,11 @@
   grid-template-columns: 300px 1fr;
   gap: var(--spacing-2xl);
   align-items: center;
-  background-color: var(--color-white);
+  background-color: #111e35;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .utilajCard.reversed {
@@ -89,13 +124,13 @@
 
 .utilajName {
   font-size: 1.75rem;
-  color: var(--color-dark);
+  color: var(--color-white);
   margin-bottom: var(--spacing-sm);
 }
 
 .utilajDesc {
   font-size: 0.95rem;
-  color: var(--color-gray);
+  color: rgba(255, 255, 255, 0.6);
   line-height: 1.7;
   margin-bottom: var(--spacing-md);
 }
@@ -109,7 +144,7 @@
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--color-gray-dark);
+  color: rgba(255, 255, 255, 0.8);
   display: block;
   margin-bottom: 0.625rem;
 }
@@ -125,7 +160,7 @@
   align-items: center;
   gap: 0.7rem;
   font-size: 0.9rem;
-  color: var(--color-gray);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .bullet {
@@ -133,29 +168,45 @@
   width: 12px;
   height: 2px;
   border-radius: 2px;
-  background-color: var(--color-primary);
+  background-color: rgba(255, 255, 255, 0.6);
   flex-shrink: 0;
 }
 
 .utilajSpecs {
   font-size: 1rem;
-  color: var(--color-gray);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .ctaLink {
-  color: var(--color-primary);
-  font-weight: 600;
-  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  transition: opacity var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  transition: color 0.25s ease;
 }
 
 .ctaLink:hover {
-  opacity: 0.75;
+  color: var(--color-white);
+}
+
+.ctaLink:hover .ctaArrow {
+  transform: translateX(5px);
+}
+
+.ctaArrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
 }
 
 .utilajeSection {
   padding-bottom: 0;
+  background-color: #0c1220;
 }
 
 .faqWrapper {
@@ -164,7 +215,7 @@
 
 .specsLabel {
   font-weight: 700;
-  color: var(--color-gray-dark);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* Form section */
@@ -234,7 +285,9 @@
 
   .utilajContent { padding: var(--spacing-lg); }
 
-  .utilajVisual { min-height: 200px; }
+  .utilajVisual { min-height: 300px; }
+
+  .utilajVisual img { object-position: center top !important; }
 
   .formSection { grid-template-columns: 1fr; }
 }

@@ -3,6 +3,7 @@
   overflow: hidden;
   user-select: none;
   width: 100%;
+  gap: var(--marquee-gap, 1.25rem);
 }
 
 .track {

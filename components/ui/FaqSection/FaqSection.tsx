@@ -11,16 +11,18 @@ export interface FaqItem {
 interface FaqSectionProps {
   items: FaqItem[];
   title?: string;
+  dark?: boolean;
 }
 
 export default function FaqSection({
   items,
   title = 'Întrebări Frecvente',
+  dark = false,
 }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${dark ? styles.sectionDark : ''}`}>
       <div className="container">
         <div className="section-header">
           <span className="label">FAQ</span>

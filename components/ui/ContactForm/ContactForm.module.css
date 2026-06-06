@@ -200,3 +200,92 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== DARK VARIANT ===== */
+.wrapperDark {
+  background-color: #111e35;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.wrapperDark .formTag {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.wrapperDark .formHeading {
+  color: var(--color-white);
+}
+
+.wrapperDark .formSubtitle {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.wrapperDark .label {
+  color: var(--color-white);
+}
+
+.wrapperDark .optional {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.wrapperDark .required {
+  color: var(--color-white);
+}
+
+.wrapperDark .input,
+.wrapperDark .select,
+.wrapperDark .textarea {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  background-image: none;
+}
+
+.wrapperDark .select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+.wrapperDark .select option {
+  background-color: #111e35;
+  color: var(--color-white);
+}
+
+.wrapperDark .input::placeholder,
+.wrapperDark .textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.wrapperDark .input:focus,
+.wrapperDark .select:focus,
+.wrapperDark .textarea:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.wrapperDark .submitBtn {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.wrapperDark .submitBtn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.wrapperDark .errorBanner {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.wrapperDark .successMsg h3 {
+  color: var(--color-white);
+}
+
+.wrapperDark .successMsg p {
+  color: rgba(255, 255, 255, 0.6);
+}

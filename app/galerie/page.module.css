@@ -1,4 +1,11 @@
-/* ===== HEADER ===== */
+/* ===== HEADER (fundal întunecat) ===== */
+.headerSection {
+  background: linear-gradient(160deg, #0c1220 0%, #111e35 100%);
+  padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
 .label {
   display: inline-block;
   color: rgba(255, 255, 255, 0.45);
@@ -10,17 +17,10 @@
   margin-bottom: 0.75rem;
 }
 
-.headerSection {
-  background: linear-gradient(160deg, #0c1220 0%, #111e35 100%);
-  padding: var(--spacing-2xl) 0 var(--spacing-xl);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
 .title {
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 800;
   color: var(--color-white);
-  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
 }
@@ -30,38 +30,48 @@
   color: rgba(255, 255, 255, 0.6);
   max-width: 520px;
   line-height: 1.6;
+  margin: 0 auto;
 }
 
-/* ===== GALLERY ===== */
+/* ===== CTA ShimmerText — identic cu galerieLink de pe homepage ===== */
+.ctaWrapper {
+  padding-top: var(--spacing-md);
+  display: flex;
+  justify-content: center;
+}
+
+.ctaLink {
+  font-family: var(--font-heading);
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  transition: color 0.25s ease;
+}
+
+.ctaLink:hover {
+  color: var(--color-white);
+}
+
+.ctaLink:hover .arrow {
+  transform: translateX(5px);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+/* ===== GALLERY SECTION ===== */
 .gallerySection {
-  position: relative;
   background: #0c1220;
   padding: var(--spacing-xl) 0;
   overflow: hidden;
-}
-
-.fadeLeft,
-.fadeRight {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 120px;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.fadeLeft {
-  left: 0;
-  background: linear-gradient(to right, #0c1220 0%, transparent 100%);
-}
-
-.fadeRight {
-  right: 0;
-  background: linear-gradient(to left, #0c1220 0%, transparent 100%);
-}
-
-.row {
-  width: 100%;
 }
 
 /* ===== CARD ===== */
@@ -72,28 +82,32 @@
   flex-shrink: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  cursor: default;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
 }
 
+.cardImg {
+  filter: grayscale(40%);
+  transition: filter 0.45s ease, transform 0.45s ease;
+}
+
+.card:hover .cardImg {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+
+/* ===== OVERLAY (mereu vizibil) ===== */
 .cardOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.18) 50%,
+    rgba(0, 0, 0, 0.15) 50%,
     transparent 100%
   );
   display: flex;
   align-items: flex-end;
   padding: 1.1rem 1.25rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card:hover .cardOverlay {
-  opacity: 1;
 }
 
 .cardDesc {
@@ -102,41 +116,4 @@
   color: rgba(255, 255, 255, 0.95);
   line-height: 1.4;
   margin: 0;
-}
-
-/* ===== CTA ===== */
-.ctaSection {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  padding: var(--spacing-2xl) 0;
-}
-
-.ctaInner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-xl);
-  flex-wrap: wrap;
-}
-
-.ctaTitle {
-  color: var(--color-white);
-  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
-  margin-bottom: 0.3rem;
-}
-
-.ctaText {
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0;
-}
-
-@media (max-width: 600px) {
-  .ctaInner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .card {
-    width: 300px;
-    height: 200px;
-  }
 }

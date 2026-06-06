@@ -119,6 +119,59 @@
   opacity: 1;
 }
 
+/* ===== DARK VARIANT ===== */
+.dark {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .overlay {
+  background: linear-gradient(
+    to right,
+    rgba(12, 18, 32, 0.91) 15%,
+    rgba(12, 18, 32, 0.72) 40%,
+    rgba(12, 18, 32, 0.36) 65%,
+    rgba(12, 18, 32, 0.06) 100%
+  );
+}
+
+.dark:hover .overlay {
+  background: linear-gradient(
+    to right,
+    rgba(12, 18, 32, 0.76) 10%,
+    rgba(12, 18, 32, 0.50) 38%,
+    rgba(12, 18, 32, 0.18) 65%,
+    rgba(12, 18, 32, 0.03) 100%
+  );
+}
+
+.dark .num {
+  color: var(--color-white);
+}
+
+.dark .vline {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark .title {
+  color: var(--color-white);
+}
+
+.dark:hover .title {
+  color: var(--color-white);
+}
+
+.dark .desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark .arrow {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.dark:hover .arrow {
+  color: var(--color-white);
+}
+
 @media (max-width: 640px) {
   .num,
   .vline {

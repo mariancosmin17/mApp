@@ -46,7 +46,7 @@ function Hero() {
         }}
       />
 
-      {/* Bottom vignette — fades to white for smooth transition to next section */}
+      {/* Bottom vignette */}
       <div
         aria-hidden="true"
         className={`absolute bottom-0 left-0 right-0 z-[3] pointer-events-none ${styles.fadeVignette}`}
@@ -59,14 +59,19 @@ function Hero() {
 
             {/* Top label */}
             <p
-              className="text-white/35 text-xs font-medium tracking-[0.25em] uppercase mb-10"
-              style={{ letterSpacing: "0.25em" }}
+              className="text-xs font-medium tracking-[0.25em] uppercase mb-10"
+              style={{ letterSpacing: "0.25em", color: "rgba(255,255,255,0.6)" }}
             >
               Târgu Neamț &nbsp;·&nbsp; Județul Neamț
             </p>
 
-            {/* MASERCOM — shiny animated */}
-            <AnimatedText text="MASERCOM" className={`py-0 ${styles.heroTitleWrapper}`} />
+            {/* MASERCOM — cycling shimmer */}
+            <AnimatedText
+              text="MASERCOM"
+              gradientColors="linear-gradient(90deg, #ffffff, rgba(0,0,0,0.22), #ffffff, rgba(0,0,0,0.22), #ffffff)"
+              gradientAnimationDuration={7}
+              className={`py-0 ${styles.heroTitleWrapper}`}
+            />
 
             {/* Thin divider */}
             <div className="w-24 h-px bg-white/15 my-5" />
@@ -76,7 +81,8 @@ function Hero() {
               {titles.map((title, index) => (
                 <motion.span
                   key={index}
-                  className="absolute text-xl md:text-3xl font-semibold text-blue-300/90 tracking-[0.18em] uppercase"
+                  className="absolute text-xl md:text-3xl font-semibold tracking-[0.18em] uppercase"
+                  style={{ color: "#9ab0c4" }}
                   initial={{ opacity: 0, y: -60 }}
                   transition={{ type: "spring", stiffness: 45, damping: 14 }}
                   animate={
@@ -91,7 +97,7 @@ function Hero() {
             </div>
 
             {/* Tagline */}
-            <p className="text-sm md:text-base text-white/45 max-w-sm text-center mt-7 leading-relaxed tracking-wide">
+            <p className="text-sm md:text-base max-w-sm text-center mt-7 leading-relaxed tracking-wide" style={{ color: "rgba(255,255,255,0.6)" }}>
               Fundații solide pentru proiecte mari.
             </p>
           </div>

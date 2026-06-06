@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import FaqSection from '@/components/ui/FaqSection/FaqSection';
 import JsonLd from '@/components/seo/JsonLd';
+import ShimmerText from '@/components/ui/ShimmerText/ShimmerText';
 import styles from './page.module.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://masercom.com';
@@ -120,18 +121,21 @@ export default function UtilajePage() {
 
       <h1 className="sr-only">Închiriere Utilaje Târgu Neamț — Nacelă, Buldoexcavator, Miniexcavator | MASERCOM</h1>
 
+      {/* Header */}
+      <section className={styles.pageHeader}>
+        <div className="container">
+          <span className={styles.headerLabel}>Parcul nostru</span>
+          <h2 className={styles.headerTitle}>Utilaje Disponibile</h2>
+          <p className={styles.headerSubtitle}>
+            Toate utilajele sunt întreținute și operate de personal calificat.
+            Transport inclus în raza de acoperire.
+          </p>
+        </div>
+      </section>
+
       {/* Utilaje cards */}
       <section className={`section ${styles.utilajeSection}`}>
         <div className="container">
-          <div className="section-header">
-            <span className="label">Parcul nostru</span>
-            <h2>Utilaje Disponibile pentru Închiriere</h2>
-            <p>
-              Toate utilajele sunt întreținute și operate de personal calificat.
-              Transport inclus în raza de acoperire.
-            </p>
-          </div>
-
           <div className={styles.utilajeList}>
             {utilaje.map((u, i) => (
               <div
@@ -165,7 +169,9 @@ export default function UtilajePage() {
                     <span className={styles.specsLabel}>Specificații:</span> {u.specs}
                   </div>
                   <div style={{ marginTop: '1rem' }}>
-                    <Link href="/contact" className={styles.ctaLink}>Solicită ofertă →</Link>
+                    <Link href="/contact" className={styles.ctaLink}>
+                      <ShimmerText>Solicită ofertă <span className={styles.ctaArrow}>→</span></ShimmerText>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -175,7 +181,7 @@ export default function UtilajePage() {
       </section>
 
       <div className={styles.faqWrapper}>
-        <FaqSection items={faqs} title="Întrebări despre Închirierea Utilajelor" />
+        <FaqSection items={faqs} title="Întrebări despre Închirierea Utilajelor" dark />
       </div>
     </>
   );

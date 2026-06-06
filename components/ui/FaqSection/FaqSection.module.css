@@ -78,3 +78,50 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== DARK VARIANT ===== */
+.sectionDark {
+  background-color: #0c1220;
+}
+
+.sectionDark :global(.label) {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.sectionDark h2 {
+  color: var(--color-white);
+}
+
+.sectionDark .item {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.sectionDark .question {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--color-white);
+}
+
+.sectionDark .question:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.sectionDark .question.open {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-white);
+}
+
+.sectionDark .chevron {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.sectionDark .chevron.open {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sectionDark .answer {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.sectionDark .answerInner {
+  color: rgba(255, 255, 255, 0.6);
+}

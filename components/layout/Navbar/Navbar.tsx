@@ -97,7 +97,7 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="flex select-none gap-4 rounded-md p-3 leading-none transition-colors hover:bg-white/10"
               >
-                <span className="mt-0.5 text-[#005BB3]">{sub.icon}</span>
+                <span className="mt-0.5 text-white">{sub.icon}</span>
                 <div>
                   <div className="text-sm font-semibold text-white">{sub.title}</div>
                   <p className="mt-1 text-sm leading-snug text-white/55">
@@ -130,7 +130,7 @@ export default function Navbar() {
           <div className="flex items-center gap-9">
             <Link href="/" className="flex items-center gap-2" aria-label="MASERCOM — Acasă">
               <span className="text-xl font-extrabold tracking-tight text-white">
-                MASER<span className="text-[#005BB3]">COM</span>
+                MASER<span className="logo-shimmer">COM</span>
               </span>
             </Link>
 
@@ -159,7 +159,7 @@ export default function Navbar() {
                                   onClick={() => setDropdownOpen(false)}
                                   className="flex select-none items-start gap-3 rounded-md px-4 py-3 leading-none no-underline outline-none transition-colors hover:bg-white/10"
                                 >
-                                  <span className="mt-0.5 shrink-0 text-[#005BB3]">{sub.icon}</span>
+                                  <span className="mt-0.5 shrink-0 text-white">{sub.icon}</span>
                                   <div>
                                     <div className="text-sm font-semibold text-white">
                                       {sub.title}
@@ -202,7 +202,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2" aria-label="MASERCOM — Acasă">
               <span className="text-xl font-extrabold tracking-tight text-white">
-                MASER<span className="text-[#005BB3]">COM</span>
+                MASER<span className="logo-shimmer">COM</span>
               </span>
             </Link>
             <div className="flex items-center gap-2">
@@ -231,7 +231,7 @@ export default function Navbar() {
                         onClick={() => setMobileOpen(false)}
                         className="text-lg font-extrabold tracking-tight text-white"
                       >
-                        MASER<span className="text-[#005BB3]">COM</span>
+                        MASER<span className="logo-shimmer">COM</span>
                       </Link>
                     </SheetTitle>
                   </SheetHeader>

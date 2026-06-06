@@ -8,12 +8,13 @@ interface ServiceCardProps {
   description: string;
   href: string;
   number: number;
+  dark?: boolean;
 }
 
-export default function ServiceCard({ image, title, description, href, number }: ServiceCardProps) {
+export default function ServiceCard({ image, title, description, href, number, dark = false }: ServiceCardProps) {
   const num = String(number).padStart(2, '0');
   return (
-    <Link href={href} className={styles.row}>
+    <Link href={href} className={`${styles.row} ${dark ? styles.dark : ''}`}>
       <div className={styles.bgWrapper}>
         <Image
           src={image}

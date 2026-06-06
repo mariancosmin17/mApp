@@ -51,7 +51,7 @@ const ClockIcon = () => (
 export default function ContactPage() {
   return (
     <>
-      <section className="section">
+      <section className={`section ${styles.contactSection}`}>
         <div className="container">
           <h1 className="sr-only">Contact MASERCOM — Transport Agregate și Închiriere Utilaje Târgu Neamț</h1>
           <div className="section-header">
@@ -123,7 +123,7 @@ export default function ContactPage() {
 
             {/* 2. Form */}
             <div className={styles.formCol}>
-              <ContactForm title="Solicită o ofertă gratuită" />
+              <ContactForm title="Solicită o ofertă gratuită" dark />
             </div>
 
             {/* 3. Map */}

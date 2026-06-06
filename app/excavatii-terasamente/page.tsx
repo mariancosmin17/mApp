@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import FaqSection from '@/components/ui/FaqSection/FaqSection';
 import JsonLd from '@/components/seo/JsonLd';
+import ShimmerText from '@/components/ui/ShimmerText/ShimmerText';
 import styles from './page.module.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://masercom.com';
@@ -50,32 +51,32 @@ export const metadata: Metadata = {
 const services = [
   {
     title: 'Săpături Fundații',
-    desc: 'Săpături precise pentru fundații case, blocuri, hale industriale și alte construcții. Respectăm cotele proiectate și lucrăm rapid.',
+    desc: 'Săpături precise pentru fundații case, blocuri și hale industriale.',
     image: '/e1.jpg',
   },
   {
     title: 'Nivelări Teren',
-    desc: 'Nivelarea și pregătirea terenului pentru construcții, parcări, terenuri sportive, grădini. Rezultat uniform, pregătit pentru etapa următoare.',
+    desc: 'Nivelarea terenului pentru construcții, parcări și amenajări exterioare.',
     image: '/e2.webp',
   },
   {
     title: 'Demolări',
-    desc: 'Demolări parțiale sau totale ale construcțiilor vechi, ziduri, anexe. Evacuarea și transportul molozului incluse la cerere.',
+    desc: 'Demolări parțiale sau totale, cu evacuarea molozului inclusă.',
     image: '/e3.jpg',
   },
   {
     title: 'Terasamente',
-    desc: 'Lucrări complexe de modificare a reliefului: rambleuri, debleiuri, terase pentru construcții pe teren în pantă.',
+    desc: 'Rambleuri, debleiuri și terase pentru construcții pe teren în pantă.',
     image: '/e4.jpg',
   },
   {
     title: 'Drenaje & Canalizări',
-    desc: 'Săpături pentru rețele de drenaj, canalizare și conducte subterane. Lucrăm atent pentru a evita deteriorarea rețelelor existente.',
+    desc: 'Săpături pentru rețele de drenaj, canalizare și conducte subterane.',
     image: '/e5.webp',
   },
   {
     title: 'Lucrări de Drum',
-    desc: 'Amenajare alei de acces, parcări, drumuri de exploatare. De la pregătirea patului de fundație până la compactare.',
+    desc: 'Amenajare alei de acces, parcări și drumuri de exploatare.',
     image: '/e6.webp',
   },
 ];
@@ -114,23 +115,24 @@ export default function ExcavatiiterasamentePage() {
 
       <h1 className="sr-only">Excavații și Terasamente Târgu Neamț — Săpături, Nivelări, Demolări | MASERCOM</h1>
 
+      {/* Header */}
+      <section className={styles.pageHeader}>
+        <div className="container">
+          <span className={styles.headerLabel}>Lucrări executate</span>
+          <h2 className={styles.headerTitle}>Servicii de Excavații &amp; Terasamente</h2>
+          <p className={styles.headerSubtitle}>
+            Echipă cu experiență, utilaje proprii, lucrări la cheie. Operăm în Târgu Neamț și împrejurimi.
+          </p>
+          <p className={styles.headerCtaText}>
+            <Link href="/contact" className={styles.headerCtaLink}>
+              <ShimmerText>Solicită ofertă <span className={styles.arrow}>→</span></ShimmerText>
+            </Link>
+          </p>
+        </div>
+      </section>
+
       <section className={`section ${styles.servicesSection}`}>
         <div className="container">
-          <div className="section-header">
-            <span className="label">Lucrări executate</span>
-            <h2>Servicii de Excavații &amp; Terasamente</h2>
-            <p>
-              Echipă cu experiență, utilaje proprii, lucrări la cheie. Operăm în
-              Târgu Neamț și împrejurimi.
-            </p>
-            <p className={styles.ctaInline}>
-              Ai nevoie de o ofertă personalizată?{' '}
-              <Link href="/contact" className={styles.ctaInlineLink}>
-                Solicită ofertă →
-              </Link>
-            </p>
-          </div>
-
           <div className={styles.servicesGrid}>
             {services.map((s, i) => (
               <Link key={s.title} href="/contact" className={styles.serviceCard} style={{ display: 'block', textDecoration: 'none' }}>
@@ -154,7 +156,7 @@ export default function ExcavatiiterasamentePage() {
       </section>
 
       <div className={styles.faqWrapper}>
-        <FaqSection items={faqs} title="Întrebări despre Excavații & Terasamente" />
+        <FaqSection items={faqs} title="Întrebări despre Excavații & Terasamente" dark />
       </div>
     </>
   );

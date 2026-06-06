@@ -267,6 +267,20 @@ button {
 }
 
 /* ===== ANIMATIONS ===== */
+@keyframes logoShimmerScroll {
+  from { background-position: 0 0; }
+  to   { background-position: 200% 0; }
+}
+
+.logo-shimmer {
+  background-image: linear-gradient(90deg, #ffffff, rgba(0,0,0,0.22), #ffffff, rgba(0,0,0,0.22), #ffffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: logoShimmerScroll 7s linear infinite reverse;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

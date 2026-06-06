@@ -6,7 +6,9 @@ export const TestimonialsColumn = (props: {
   className?: string;
   testimonials: typeof testimonials;
   duration?: number;
+  dark?: boolean;
 }) => {
+  const { dark = false } = props;
   return (
     <div className={props.className}>
       <motion.div
@@ -111,9 +113,9 @@ const firstColumn = testimonials.slice(0, 3);
 const secondColumn = testimonials.slice(3, 6);
 const thirdColumn = testimonials.slice(6, 9);
 
-const Testimonials = () => {
+const Testimonials = ({ dark = false }: { dark?: boolean }) => {
   return (
-    <section className="bg-slate-50 pt-44 pb-20 relative overflow-hidden">
+    <section className={`${dark ? 'bg-[#0c1220]' : 'bg-slate-50'} pt-16 pb-16 relative overflow-hidden`}>
       <div className="container mx-auto px-6 z-10 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -123,14 +125,14 @@ const Testimonials = () => {
           className="section-header"
           style={{ marginBottom: '2rem', marginTop: '3rem' }}
         >
-          <h2>Ce spun clienții</h2>
-          <p>Sute de clienți mulțumiți din Târgu Neamț și județul Neamț.</p>
+          <h2 style={dark ? { color: 'var(--color-white)' } : {}}>Ce spun clienții</h2>
+          <p style={dark ? { color: 'rgba(255,255,255,0.6)' } : {}}>Sute de clienți mulțumiți din Târgu Neamț și județul Neamț.</p>
         </motion.div>
 
         <div className="flex justify-center gap-6 mt-2 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[720px] overflow-hidden">
-          <TestimonialsColumn testimonials={firstColumn} duration={15} />
-          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
-          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+          <TestimonialsColumn testimonials={firstColumn} duration={15} dark={dark} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} dark={dark} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} dark={dark} />
         </div>
       </div>
     </section>

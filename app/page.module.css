@@ -1,6 +1,22 @@
 /* ===== SERVICES — editorial list ===== */
+.servicesSection {
+  background-color: #0c1220;
+}
+
+.servicesSection :global(.section-header) :global(.label) {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.servicesSection :global(.section-header) h2 {
+  color: var(--color-white);
+}
+
+.servicesSection :global(.section-header) p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .servicesList {
-  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   max-width: 900px;
   margin: 0 auto;
 }
@@ -8,7 +24,7 @@
 /* ===== STATS BAR ===== */
 .statsBar {
   background-color: var(--color-dark);
-  padding: var(--spacing-2xl) 0;
+  padding: var(--spacing-lg) 0;
 }
 
 .statsRow {
@@ -86,6 +102,98 @@
 .arrow {
   display: inline-block;
   transition: transform 0.25s ease;
+}
+
+/* ===== GALLERY PREVIEW ===== */
+.galleryPreview {
+  background-color: #0c1220;
+  padding: var(--spacing-lg) 0;
+}
+
+.galleryInner {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.galleryInner::before,
+.galleryInner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.galleryInner::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(12, 18, 32, 0.7) 0%,
+    rgba(12, 18, 32, 0.3) 45%,
+    transparent 100%
+  );
+}
+
+.galleryInner::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(12, 18, 32, 0.7) 0%,
+    rgba(12, 18, 32, 0.3) 45%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .galleryInner::before,
+  .galleryInner::after {
+    width: 55px;
+  }
+}
+
+.galleryCard {
+  position: relative;
+  width: 360px;
+  height: 240px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.galleryCardImg {
+  filter: grayscale(35%);
+  transition: filter 0.45s ease, transform 0.45s ease;
+}
+
+.galleryCard:hover .galleryCardImg {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+
+.galleryCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 1.1rem 1.25rem;
+}
+
+.galleryCardDesc {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.4;
+  margin: 0;
 }
 
 /* ===== ABOUT ===== */
