@@ -3,9 +3,9 @@ import { PhoneIcon, MapPinIcon, ChatIcon } from '@/components/ui/icons';
 import PhoneDisperse from '@/components/ui/phone-disperse';
 import styles from './Footer.module.css';
 
-const phone = process.env.NEXT_PUBLIC_PHONE ?? '0756523427';
-const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP ?? '40756523427';
-const address = process.env.NEXT_PUBLIC_ADDRESS ?? 'Strada Independenței Nr. 29, Târgu Neamț, Neamț 615200';
+const phone = '0756523427';
+const whatsapp = '40756523427';
+const address = 'Strada Independenței Nr. 29, Târgu Neamț, Neamț 615200';
 const mapsUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}`;
 
 export default function Footer() {
