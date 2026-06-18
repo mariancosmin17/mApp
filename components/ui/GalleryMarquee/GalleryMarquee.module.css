@@ -1,17 +1,14 @@
 .root {
-  display: flex;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  overflow: hidden;
   cursor: grab;
   user-select: none;
 }
 
-.root::-webkit-scrollbar {
-  display: none;
+.wrap {
+  display: flex;
+  will-change: transform;
 }
 
-/* padding-right = gap, so the seam between track1→track2 matches inner gaps */
 .track {
   display: flex;
   flex-shrink: 0;
